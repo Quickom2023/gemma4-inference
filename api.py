@@ -267,7 +267,7 @@ def verify_api_key(x_api_key):
 
 @app.post("/api/v1/video/analyze", status_code=200)
 async def analyze_and_wait(
-    video: UploadFile = File(...),
+    file: UploadFile = File(...),
     max_new_tokens: int = Form(DEFAULT_MAX_NEW_TOKENS),
     x_api_key: str | None = Header(default=None)
 ) -> dict:
@@ -279,7 +279,7 @@ async def analyze_and_wait(
     """
     verify_api_key(x_api_key)
     
-    job = _enqueue(video, max_new_tokens, None)
+    job = _enqueue(file, max_new_tokens, None)
     await run_in_threadpool(job.done.wait)
     if job.status == FAILED:
         raise HTTPException(status_code=500, detail=job.error)
