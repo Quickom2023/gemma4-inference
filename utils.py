@@ -18,6 +18,7 @@ from urllib.parse import unquote, urlparse
 import httpx
 from dotenv import load_dotenv
 from fastapi import HTTPException, UploadFile
+from fastapi.concurrency import run_in_threadpool
 
 from service import VideoAnalyzer
 
@@ -314,7 +315,8 @@ class JobStore:
                 )
                 job.result = {
                     "description": result.description,
-                    "safety": {"nudity": result.nudity, "nsfw": result.nsfw},
+                    "safety": {"nudity": result.nudity, "nsfw": result.nsfw,
+                               "politics": result.politics},
                 }
                 job.status = SUCCEEDED
             except Exception as e:
@@ -327,6 +329,18 @@ class JobStore:
 
 
 store = JobStore()
+
+
+async def transcribe_and_check(audio_path: str | None) -> tuple[str | None, bool]:
+    """Transcribe the audio, then judge what was said. Returns (text, is_safe).
+
+    The check has to chain after the transcript rather than run beside it — there's
+    nothing to judge until STT answers. Silence and an unreachable STT both come
+    back (None, True): no words, nothing to flag.
+    """
+    transcription = await run_in_threadpool(transcribe_audio, audio_path)
+    is_safe = await run_in_threadpool(store.text_is_safe, transcription)
+    return transcription, is_safe
 
 
 def enqueue(video_path: str, max_new_tokens: int, job_id: str | None = None) -> Job:

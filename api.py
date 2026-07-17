@@ -19,9 +19,10 @@ Send an optional text field (a caption, title, comment) and it is judged too:
     curl -H "x-api-key: $X_API_KEY" -F file=@clip.mp4 -F text="check this out" \
          http://localhost:8000/api/v1/video/analyze
 
-safety is the verdict, not the detail: true means clean, false means the model
-found nudity or NSFW content in the video, or NSFW content in the text. The
-description and transcription are returned either way.
+safety is the verdict, not the detail. Three sources feed it — what the video
+shows, what the caller wrote in text, and what is said aloud (the transcript).
+Any one of them being NSFW makes it false. The description and transcription are
+returned either way.
 
 The call blocks until the result is ready. Analysis is GPU-bound and strictly
 serial, so requests queue on a single worker thread; speech-to-text runs against
@@ -44,7 +45,7 @@ from utils import (
     extract_audio,
     materialize_video,
     store,
-    transcribe_audio,
+    transcribe_and_check,
     unlink,
 )
 
@@ -97,25 +98,25 @@ async def analyze_and_wait(
         unlink(audio_path)
         raise
 
-    # All three are issued together. STT genuinely overlaps the model (it's a call
-    # to another machine); the text check shares this GPU, so it interleaves with
-    # the video rather than running alongside it.
-    _, transcription, text_safe = await asyncio.gather(
+    # Issued together. STT genuinely overlaps the model (it's a call to another
+    # machine); the text checks share this GPU, so they interleave with the video
+    # rather than running alongside it.
+    _, (transcription, transcription_safe), text_safe = await asyncio.gather(
         run_in_threadpool(job.done.wait),
-        run_in_threadpool(transcribe_audio, audio_path),
+        transcribe_and_check(audio_path),
         run_in_threadpool(store.text_is_safe, text),
     )
     if job.status == FAILED:
         raise HTTPException(status_code=500, detail=job.error)
 
-    # The model judges the video for nudity and nsfw and the text for nsfw; the
-    # caller only gets the verdict. Anything flagged makes the whole thing unsafe.
+    # Three sources feed one verdict: what the video shows, what the caller wrote,
+    # and what was said aloud. Any of them flagged makes the whole thing unsafe.
     flags = job.result["safety"]
-    video_safe = not (flags["nudity"] or flags["nsfw"])
+    video_safe = not (flags["nudity"] or flags["nsfw"] or flags["politics"])
     return {
         "description": job.result["description"],
         "transcription": transcription,
-        "safety": video_safe and text_safe,
+        "safety": video_safe and text_safe and transcription_safe,
     }
 
 
