@@ -16,3 +16,5 @@ bitsandbytes>=0.47.0   # 4-bit/8-bit quantization (--4bit); needs recent build f
 fastapi
 uvicorn[standard]
 python-multipart   # required by FastAPI for multipart/form-data uploads
+
+httpx
