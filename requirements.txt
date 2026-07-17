@@ -7,7 +7,6 @@ transformers>=4.57.0
 accelerate
 librosa            # audio track handling in videos
 av                 # PyAV video decoder backend used by transformers
-torchcodec==0.6.*  # decodes AUDIO from mp4 (load_audio_from_video); 0.6 matches torch 2.8/cu128
 pillow
 huggingface_hub
 bitsandbytes>=0.47.0   # 4-bit/8-bit quantization (--4bit); needs recent build for Blackwell/sm_120
