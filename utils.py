@@ -253,8 +253,11 @@ class JobStore:
     def model_id(self) -> str | None:
         return self._analyzer.model_id if self._analyzer else None
 
-    def text_is_safe(self, text: str | None) -> bool:
+    def text_is_safe(self, text: str | None, extra_rules: str | None = None) -> bool:
         """False only if the model judges `text` nsfw. Nothing to check = safe.
+
+        `extra_rules` are optional caller-supplied moderation rules layered on top of
+        the defaults.
 
         Deliberately not fail-open: if the check itself blows up the exception
         propagates and the request 500s, because a safety check that silently
@@ -262,7 +265,7 @@ class JobStore:
         """
         if not text or not text.strip():
             return True
-        return not self._analyzer.check_text(text)
+        return not self._analyzer.check_text(text, extra_rules=extra_rules)
 
     def add(self, job: Job) -> None:
         self._reap()

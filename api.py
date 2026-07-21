@@ -37,6 +37,12 @@ To judge a piece of text on its own — no audio, no video — POST JSON to
          http://localhost:8000/api/v1/content/validate
 
     # -> {"safety": true}   # false when the text is nsfw or political
+
+Pass an optional "prompt" to add your own moderation rules on top of the defaults:
+
+    curl -H "x-api-key: $X_API_KEY" -H "content-type: application/json" \
+         -d '{"text": "...", "prompt": "Also flag spam and scam links."}' \
+         http://localhost:8000/api/v1/content/validate
 """
 import asyncio
 import hmac
@@ -134,6 +140,7 @@ async def analyze_and_wait(
 
 class ValidateRequest(BaseModel):
     text: str
+    prompt: str | None = None
 
 
 @app.post("/api/v1/content/validate", status_code=200)
@@ -147,9 +154,12 @@ async def validate_content(
     text (a caption, a comment, an existing transcript), so there's nothing to
     transcribe. It's run through the same Gemma text moderation /analyze applies to
     captions. `safety` is false when the text is nsfw or political.
+
+    Optional `prompt` adds caller-supplied moderation rules on top of the defaults
+    (e.g. extra categories or wording to catch); omit it for the standard check.
     """
     verify_api_key(x_api_key)
-    safe = await run_in_threadpool(store.text_is_safe, body.text)
+    safe = await run_in_threadpool(store.text_is_safe, body.text, body.prompt)
     return {"safety": safe}
 
 
