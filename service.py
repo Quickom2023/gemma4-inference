@@ -361,7 +361,6 @@ class VideoAnalyzer:
             "content": [{"type": "text",
                          "text": build_text_safety_prompt(text, extra_rules)}],
         }]
-        print(messages)
         with self._lock:
             inputs = self.processor.apply_chat_template(
                 messages, tokenize=True, return_dict=True,
