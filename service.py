@@ -88,9 +88,6 @@ RULES:
 1. Set nsfw = true if the text is sexual, graphically violent, hateful, or contains profanity, insults, obscene language, or cursing — in any language.
 2. Set politics = true if the text mentions political content: politicians (e.g., Tô Lâm, Tổng Bí thư), government officials/offices, police, political parties, propaganda, or political speeches/meetings.
 
-INPUT TEXT:
-{text}
-
 OUTPUT INSTRUCTIONS:
 Reply in EXACTLY this format and nothing else:
 # Safety
