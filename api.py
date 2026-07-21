@@ -11,7 +11,8 @@ Send a video either as a file upload or as a URL — exactly one of the two:
     curl -H "x-api-key: $X_API_KEY" -F url=https://example.com/clip.mp4 \
          http://localhost:8000/api/v1/video/analyze
 
-    # -> {"description": "...", "transcription": "...", "safety": true}
+    # -> {"description": "...", "duration": 12.34, "transcription": "...", "safety": true}
+    #    duration is the video length in seconds (0.0 if ffprobe can't tell)
     #    transcription is null if the video is silent or STT is down
 
 Send an optional text field (a caption, title, comment) and it is judged too:
@@ -115,6 +116,7 @@ async def analyze_and_wait(
     video_safe = not (flags["nudity"] or flags["nsfw"] or flags["politics"])
     return {
         "description": job.result["description"],
+        "duration": job.result["duration"],
         "transcription": transcription,
         "safety": video_safe and text_safe and transcription_safe,
     }

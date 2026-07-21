@@ -315,6 +315,7 @@ class JobStore:
                 )
                 job.result = {
                     "description": result.description,
+                    "duration": result.duration_s,
                     "safety": {"nudity": result.nudity, "nsfw": result.nsfw,
                                "politics": result.politics},
                 }
