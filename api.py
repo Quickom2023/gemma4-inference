@@ -28,6 +28,15 @@ returned either way.
 The call blocks until the result is ready. Analysis is GPU-bound and strictly
 serial, so requests queue on a single worker thread; speech-to-text runs against
 the STT service concurrently with the model, not after it.
+
+To judge a piece of text on its own — no audio, no video — POST JSON to
+/api/v1/content/validate. Use it when you already hold the content as text:
+
+    curl -H "x-api-key: $X_API_KEY" -H "content-type: application/json" \
+         -d '{"text": "some comment to check"}' \
+         http://localhost:8000/api/v1/content/validate
+
+    # -> {"safety": true}   # false when the text is nsfw or political
 """
 import asyncio
 import hmac
@@ -36,6 +45,7 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
+from pydantic import BaseModel
 
 from contextlib import asynccontextmanager
 
@@ -120,6 +130,27 @@ async def analyze_and_wait(
         "transcription": transcription,
         "safety": video_safe and text_safe and transcription_safe,
     }
+
+
+class ValidateRequest(BaseModel):
+    text: str
+
+
+@app.post("/api/v1/content/validate", status_code=200)
+async def validate_content(
+    body: ValidateRequest,
+    x_api_key: str | None = Header(default=None),
+) -> dict:
+    """Judge whether a piece of text is safe — no audio, no video.
+
+    The lightweight counterpart to /analyze: the caller already has the content as
+    text (a caption, a comment, an existing transcript), so there's nothing to
+    transcribe. It's run through the same Gemma text moderation /analyze applies to
+    captions. `safety` is false when the text is nsfw or political.
+    """
+    verify_api_key(x_api_key)
+    safe = await run_in_threadpool(store.text_is_safe, body.text)
+    return {"safety": safe}
 
 
 if __name__ == "__main__":
