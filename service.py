@@ -160,6 +160,21 @@ def has_explicit_curse(text: str) -> bool:
     return any(term in compact for term in EXPLICIT_CURSE_TERMS)
 
 
+# Full-word terms matched against the RAW text — case-insensitive substring only, NO
+# tone-stripping or symbol removal. These words carry their meaning in the diacritics:
+# folding tones the way normalize_for_match does would turn "đéo"/"điên"/"chết" into
+# ambiguous "deo"/"dien"/"chet" that collide with ordinary text, so they're checked
+# as written instead. Lowercasing is the only transform, so a capitalized "Chết"
+# still matches. A hit can only ADD an nsfw verdict, never clear one.
+RAW_UNSAFE_TERMS = frozenset({"đéo", "chết", "điên", "khùng"})
+
+
+def has_raw_unsafe_term(text: str) -> bool:
+    """True if the raw text contains a RAW_UNSAFE_TERMS word (case-insensitive)."""
+    lowered = text.lower()
+    return any(term in lowered for term in RAW_UNSAFE_TERMS)
+
+
 @dataclass
 class ChunkResult:
     start: float
@@ -349,8 +364,9 @@ class VideoAnalyzer:
         It still takes the GPU lock, so it queues behind any video the model is
         working on rather than truly running alongside it.
         """
-        # Deterministic pre-check: a known curse short-circuits to unsafe, no model.
-        if has_explicit_curse(text):
+        # Deterministic pre-check: a known curse (normalized or raw) short-circuits
+        # to unsafe, no model.
+        if has_explicit_curse(text) or has_raw_unsafe_term(text):
             return True
 
         messages = [{
