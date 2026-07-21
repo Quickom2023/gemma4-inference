@@ -48,6 +48,29 @@ protests or demonstrations, propaganda, military or police in an official role,
 national or party flags and emblems, or political news coverage.
 Otherwise leave them false."""
 
+# Image counterpart of PROMPT. Same # Description / # Safety template so parse_reply
+# stays identical — only the medium and tense differ ("this image", not "this video").
+IMAGE_PROMPT = """Look at this image and describe it, then judge its safety.
+
+Reply in EXACTLY this format and nothing else:
+
+# Description
+<a few sentences describing what the image shows - the scene, people, actions, objects, etc.>
+
+# Safety
+nudity = false
+nsfw = false
+politics = false
+
+Set nudity = true if anyone is nude, partially nude, or in underwear/swimwear.
+Set nsfw = true if the image is sexual, graphically violent, or otherwise not
+safe to view at work.
+Set politics = true if the image shows political content of any kind: politicians,
+government officials or offices, political parties, elections or campaigning,
+protests or demonstrations, propaganda, military or police in an official role,
+national or party flags and emblems, or political news coverage.
+Otherwise leave them false."""
+
 # No nudity flag here: nudity is something you see, not something text can contain.
 #
 # The word lists are examples, not a blocklist — the model still judges meaning, so
@@ -111,12 +134,11 @@ def build_text_safety_prompt(text: str, extra_rules: str | None = EXTRA_TEXT_RUL
 # hit can only ADD an nsfw verdict, never clear one.
 EXPLICIT_CURSE_TERMS = frozenset({
     "vcl", "vkl", "vvl", "vloz", "vcc",  "djt",
-    "clgt", "loz", "daubuoi", "lonmemay", "hamlon", "xaol", "concac", "bucu", "amdao", "ditme", "ditconme", "ditcon",
+    "clgt", "loz", "daubuoi", "lonmemay", "hamlon", "xaol", "bucu", "amdao", "ditme", "ditconme", "ditcon",
     "congsan", "viettan", "bantuyengiao", "tuyengiao", "bodo", "baque", "3que", "ducang",
     "cml", "clm", "cmm",
     "dcm", "dcmm", "dkm", "dkmm", "dmm",
     "dmcs",
-    "concac",
 })
 
 _NON_ALNUM = re.compile(r"[^a-z0-9]+")
@@ -280,19 +302,23 @@ class VideoAnalyzer:
         # One GPU: serialize so concurrent requests queue instead of racing for VRAM.
         self._lock = threading.Lock()
 
-    def _describe(self, video_path: str, max_new_tokens: int) -> tuple[str, float, float]:
+    def _describe(self, media_path: str, max_new_tokens: int,
+                  media_type: str = "video") -> tuple[str, float, float]:
         t = time.perf_counter()
-        messages = [{
-            "role": "user",
-            "content": [
-                {"type": "video", "video": video_path},
-                {"type": "text", "text": PROMPT},
-            ],
-        }]
+        if media_type == "image":
+            content = [{"type": "image", "image": media_path},
+                       {"type": "text", "text": IMAGE_PROMPT}]
+            # load_audio_from_video is video-only; passing it for an image is nonsense.
+            template_kwargs = {}
+        else:
+            content = [{"type": "video", "video": media_path},
+                       {"type": "text", "text": PROMPT}]
+            template_kwargs = {"load_audio_from_video": False}
+        messages = [{"role": "user", "content": content}]
         inputs = self.processor.apply_chat_template(
             messages, tokenize=True, return_dict=True,
             return_tensors="pt", add_generation_prompt=True,
-            load_audio_from_video=False,
+            **template_kwargs,
         ).to(self.model.device)
 
         # The processor emits fp32 pixel_values; the vision tower is bf16.
@@ -354,21 +380,28 @@ class VideoAnalyzer:
 
     def analyze(
         self,
-        video_path: str,
+        media_path: str,
         max_new_tokens: int = DEFAULT_MAX_NEW_TOKENS,
         progress: Callable[[int, int], None] | None = None,
+        media_type: str = "video",
     ) -> AnalyzeResult:
-        """Describe `video_path` and judge its safety.
+        """Describe `media_path` and judge its safety.
 
         `progress(done, total)` is called after each chunk, so a caller can report
         how far along a long video is.
+
+        For `media_type == "image"` there is no timeline: no duration, no audio, no
+        chunking — a single describe call, reported as one chunk.
         """
-        duration = probe_duration(video_path)
+        if media_type == "image":
+            return self._analyze_image(media_path, max_new_tokens, progress)
+
+        duration = probe_duration(media_path)
         result = AnalyzeResult(description="", nudity=False, nsfw=False,
                                politics=False, duration_s=round(duration, 2))
 
         with self._lock, tempfile.TemporaryDirectory(prefix="gemma4_chunks_") as workdir:
-            segments = split_video(video_path, duration, workdir)
+            segments = split_video(media_path, duration, workdir)
             if progress:
                 progress(0, len(segments))
             parts = []
@@ -396,4 +429,33 @@ class VideoAnalyzer:
         result.description = "\n\n".join(parts).strip()
         result.preprocess_s = round(result.preprocess_s, 3)
         result.generate_s = round(result.generate_s, 3)
+        return result
+
+    def _analyze_image(
+        self,
+        image_path: str,
+        max_new_tokens: int,
+        progress: Callable[[int, int], None] | None = None,
+    ) -> AnalyzeResult:
+        """Single describe call for a still image — no probe, audio, or chunking.
+
+        duration_s stays 0.0: an image has no timeline. The one describe call is
+        reported as a single chunk so callers see the same progress shape as video.
+        """
+        result = AnalyzeResult(description="", nudity=False, nsfw=False,
+                               politics=False, duration_s=0.0)
+        with self._lock:
+            if progress:
+                progress(0, 1)
+            raw, pre_s, gen_s = self._describe(
+                image_path, max_new_tokens, media_type="image")
+            description, nudity, nsfw, politics = parse_reply(raw)
+            result.description = description
+            result.nudity, result.nsfw, result.politics = nudity, nsfw, politics
+            result.preprocess_s = round(pre_s, 3)
+            result.generate_s = round(gen_s, 3)
+            result.chunks.append(
+                ChunkResult(0.0, 0.0, description, nudity, nsfw, politics))
+            if progress:
+                progress(1, 1)
         return result

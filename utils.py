@@ -28,6 +28,11 @@ load_dotenv()
 # Clients routinely upload video as application/octet-stream (curl does), so the
 # suffix — which is what the decoder dispatches on anyway — is the real gate.
 VIDEO_SUFFIXES = {".mp4", ".mov", ".mkv", ".webm", ".avi", ".m4v", ".mpeg", ".mpg"}
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
+# Per-media-type suffix rules and the fallback used when a URL carries no usable
+# extension (the decoder dispatches on the suffix, so a sane default matters).
+MEDIA_SUFFIXES = {"video": VIDEO_SUFFIXES, "image": IMAGE_SUFFIXES}
+MEDIA_URL_FALLBACK = {"video": ".mp4", "image": ".jpg"}
 MAX_VIDEO_URL_BYTES = 1000 * 1024 * 1024  # ~1 GB cap on downloaded videos; tune as needed
 VIDEO_URL_TIMEOUT_S = 60  # connect+read timeout for the download
 JOB_ID_RE = re.compile(r"^[A-Za-z0-9_.-]{1,64}$")
@@ -56,23 +61,29 @@ def unlink(path: str | None) -> None:
 # Getting a video onto disk
 # --------------------------------------------------------------------------- #
 
-def materialize_video(file: UploadFile | None, url: str | None) -> str:
-    """Get the request's video onto disk, whichever way it arrived."""
+def materialize_video(file: UploadFile | None, url: str | None,
+                      media_type: str = "video") -> str:
+    """Get the request's media onto disk, whichever way it arrived.
+
+    `media_type` ("video" or "image") selects which suffixes are accepted.
+    """
     if (file is None) == (url is None):
         raise HTTPException(
             status_code=400,
             detail="provide exactly one of file (upload) or url",
         )
-    return save_upload(file) if file is not None else download_video(url)
+    return (save_upload(file, media_type) if file is not None
+            else download_video(url, media_type))
 
 
-def save_upload(upload: UploadFile) -> str:
+def save_upload(upload: UploadFile, media_type: str = "video") -> str:
     """Spool a multipart upload to a temp file and return its path."""
+    allowed = MEDIA_SUFFIXES[media_type]
     suffix = os.path.splitext(upload.filename or "")[1].lower()
-    if suffix not in VIDEO_SUFFIXES:
+    if suffix not in allowed:
         raise HTTPException(
             status_code=400,
-            detail=f"expected a video file {sorted(VIDEO_SUFFIXES)}, "
+            detail=f"expected a {media_type} file {sorted(allowed)}, "
                    f"got filename {upload.filename!r}",
         )
     fd, path = tempfile.mkstemp(suffix=suffix, prefix="gemma4_upload_")
@@ -81,8 +92,8 @@ def save_upload(upload: UploadFile) -> str:
     return path
 
 
-def download_video(url: str) -> str:
-    """Fetch a video URL to a temp file and return its path.
+def download_video(url: str, media_type: str = "video") -> str:
+    """Fetch a media URL to a temp file and return its path.
 
     Streams to disk with a hard byte cap, so a hostile or mistaken URL can't fill
     the disk. Content-Length is advisory — servers lie or omit it — so the running
@@ -94,8 +105,10 @@ def download_video(url: str) -> str:
                             detail=f"url must be http(s), got {parsed.scheme!r}")
 
     suffix = os.path.splitext(unquote(parsed.path))[1].lower()
-    if suffix not in VIDEO_SUFFIXES:
-        suffix = ".mp4"  # URLs often carry no usable extension; let the decoder decide
+    if suffix not in MEDIA_SUFFIXES[media_type]:
+        # URLs often carry no usable extension; fall back per media type and let
+        # the decoder decide.
+        suffix = MEDIA_URL_FALLBACK[media_type]
 
     fd, path = tempfile.mkstemp(suffix=suffix, prefix="gemma4_download_")
     written = 0
@@ -185,6 +198,7 @@ class Job:
     id: str
     video_path: str
     max_new_tokens: int
+    media_type: str = "video"
     status: str = RUNNING
     started: bool = False   # False = still queued behind other jobs
     created_at: float = field(default_factory=time.time)
@@ -315,6 +329,7 @@ class JobStore:
 
                 result = self._analyzer.analyze(
                     job.video_path, job.max_new_tokens, progress=progress,
+                    media_type=job.media_type,
                 )
                 job.result = {
                     "description": result.description,
@@ -347,15 +362,16 @@ async def transcribe_and_check(audio_path: str | None) -> tuple[str | None, bool
     return transcription, is_safe
 
 
-def enqueue(video_path: str, max_new_tokens: int, job_id: str | None = None) -> Job:
-    """Queue an already-materialized video file for analysis."""
+def enqueue(video_path: str, max_new_tokens: int, job_id: str | None = None,
+            media_type: str = "video") -> Job:
+    """Queue an already-materialized media file for analysis."""
     if job_id is not None and not JOB_ID_RE.match(job_id):
         unlink(video_path)
         raise HTTPException(status_code=400,
                             detail="job_id must be 1-64 chars of [A-Za-z0-9_.-]")
 
     job = Job(id=job_id or uuid.uuid4().hex, video_path=video_path,
-              max_new_tokens=max_new_tokens)
+              max_new_tokens=max_new_tokens, media_type=media_type)
     try:
         store.add(job)
     except KeyError:

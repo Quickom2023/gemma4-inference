@@ -20,6 +20,13 @@ Send an optional text field (a caption, title, comment) and it is judged too:
     curl -H "x-api-key: $X_API_KEY" -F file=@clip.mp4 -F text="check this out" \
          http://localhost:8000/api/v1/video/analyze
 
+Pass type=image to analyze a still image instead of a video. An image has no
+timeline, so it skips audio/STT and duration — transcription is null, duration is
+0.0 — and safety is judged from the image and any text alone:
+
+    curl -H "x-api-key: $X_API_KEY" -F file=@photo.jpg -F type=image \
+         http://localhost:8000/api/v1/video/analyze
+
 safety is the verdict, not the detail. Three sources feed it — what the video
 shows, what the caller wrote in text, and what is said aloud (the transcript).
 Any one of them being NSFW makes it false. The description and transcription are
@@ -99,18 +106,29 @@ async def analyze_and_wait(
     file: UploadFile | None = File(None),
     url: str | None = Form(None),
     text: str | None = Form(None),
+    type: str = Form("video"),
     max_new_tokens: int = Form(DEFAULT_MAX_NEW_TOKENS),
     x_api_key: str | None = Header(default=None),
 ) -> dict:
-    """Describe a video, judge it and any accompanying text, transcribe its speech."""
-    verify_api_key(x_api_key)
+    """Describe a video or image, judge it and any text, transcribe speech.
 
-    video_path = await run_in_threadpool(materialize_video, file, url)
-    # Rip the audio before queueing: the worker deletes the video file the moment
-    # it finishes, which would race the extraction.
-    audio_path = await run_in_threadpool(extract_audio, video_path)
+    `type` is "video" (default) or "image". An image has no timeline: it skips
+    audio/STT and duration, so `transcription` is null and `duration` is 0.0, and
+    safety is judged from the image and any `text` alone.
+    """
+    verify_api_key(x_api_key)
+    if type not in ("video", "image"):
+        raise HTTPException(status_code=400,
+                            detail="type must be 'video' or 'image'")
+
+    media_path = await run_in_threadpool(materialize_video, file, url, type)
+    # Images have no audio track; only videos get ripped for STT. Rip before
+    # queueing: the worker deletes the media file the moment it finishes, which
+    # would race the extraction.
+    audio_path = (await run_in_threadpool(extract_audio, media_path)
+                  if type == "video" else None)
     try:
-        job = enqueue(video_path, max_new_tokens)
+        job = enqueue(media_path, max_new_tokens, media_type=type)
     except Exception:
         unlink(audio_path)
         raise
