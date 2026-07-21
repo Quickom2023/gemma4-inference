@@ -128,14 +128,36 @@ def format_timestamp(seconds: float) -> str:
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m:02d}:{s:02d}"
 
 
+# ffmpeg flags shared by every path that writes a file for the model to decode.
+# The decoder transformers uses (torchcodec, exact-seek) scans the container and
+# aborts — "Did you add a stream before you called for a scan?" — if any stream is
+# marked AVDISCARD_ALL. FFmpeg auto-marks the QuickTime timecode/chapter data track
+# that many phone captures and CDN re-muxes carry, so a perfectly valid video that
+# happens to include one crashes the model. Keep only the video stream and drop the
+# chapter metadata that would otherwise make the mp4 muxer regenerate that track:
+#   -map 0:v:0  keep the first video stream, nothing else
+#   -an -sn -dn drop audio/subtitle/data streams (audio is ripped separately upstream)
+#   -map_metadata -1  drop container metadata, incl. the chapter refs -dn can't remove
+# Stream-level rotation (the display matrix) is side data, untouched by -map_metadata.
+_VIDEO_ONLY_FLAGS = ["-map", "0:v:0", "-an", "-sn", "-dn", "-map_metadata", "-1"]
+
+
 def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, float, str]]:
     """Cut `path` into <=CHUNK_SECONDS pieces. Returns (start, end, path) tuples.
 
-    Short videos (and videos of unknown duration) pass through untouched, so the
-    common case costs no ffmpeg work.
+    Every returned path is a normalized, video-only file — even short videos, which
+    are remuxed rather than passed through, so a stray data track can't crash the
+    decoder. The remux is a stream copy (~no work); only long videos pay to re-encode.
     """
     if duration <= CHUNK_SECONDS or duration <= 0:
-        return [(0.0, duration, path)]
+        # Lossless remux: strips the extra streams without touching the frames.
+        dst = os.path.join(workdir, "full.mp4")
+        subprocess.run(
+            ["ffmpeg", "-v", "error", "-y", "-i", path, *_VIDEO_ONLY_FLAGS,
+             "-c:v", "copy", dst],
+            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+        )
+        return [(0.0, duration, dst)]
 
     segments = []
     start = 0.0
@@ -145,11 +167,11 @@ def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, f
         # Re-encode rather than -c copy. Stream copy cuts at the nearest preceding
         # keyframe, which drags a chunk's real start seconds away from `start` and
         # makes the timestamp we label it with a lie. Encoding is frame-accurate and
-        # costs ~1s per chunk — noise next to generation. -an: audio is ignored anyway.
+        # costs ~1s per chunk — noise next to generation.
         subprocess.run(
             ["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-i", path,
-             "-t", str(CHUNK_SECONDS), "-c:v", "libx264", "-preset", "ultrafast",
-             "-an", dst],
+             "-t", str(CHUNK_SECONDS), *_VIDEO_ONLY_FLAGS,
+             "-c:v", "libx264", "-preset", "ultrafast", dst],
             check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
         )
         segments.append((start, end, dst))
