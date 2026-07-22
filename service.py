@@ -165,19 +165,41 @@ def has_explicit_curse(text: str) -> bool:
     return any(term in compact for term in EXPLICIT_CURSE_TERMS)
 
 
-# Full-word terms matched against the RAW text — case-insensitive substring only, NO
-# tone-stripping or symbol removal. These words carry their meaning in the diacritics:
-# folding tones the way normalize_for_match does would turn "đéo"/"điên"/"chết" into
-# ambiguous "deo"/"dien"/"chet" that collide with ordinary text, so they're checked
-# as written instead. Lowercasing is the only transform, so a capitalized "Chết"
-# still matches. A hit can only ADD an nsfw verdict, never clear one.
-RAW_UNSAFE_TERMS = frozenset({"đéo", "chết", "điên", "khùng"})
+# Profanity wordlists (LDNOOBW) checked against the RAW text — case-insensitive, NO
+# tone-stripping or symbol removal, so each term matches as written. Matching is by
+# WHOLE WORD (\b boundaries), not substring: the lists contain short entries like
+# "ass"/"cum"/"sex" that would otherwise fire inside "class"/"document"/"sussex".
+# Python's \b treats accented Vietnamese letters as word chars, so boundaries work for
+# toned and toneless entries alike. A hit can only ADD an nsfw verdict, never clear one.
+_WORDLIST_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wordlists")
+_WORDLIST_FILES = ("en.txt", "vi.txt")
+
+
+def _load_unsafe_terms() -> frozenset[str]:
+    terms: set[str] = set()
+    for name in _WORDLIST_FILES:
+        path = os.path.join(_WORDLIST_DIR, name)
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                term = line.strip().lower()
+                if term:
+                    terms.add(term)
+    return frozenset(terms)
+
+
+RAW_UNSAFE_TERMS = _load_unsafe_terms()
+
+# One compiled alternation, longest terms first so multi-word phrases win over their
+# fragments. Terms are escaped; \b anchors each to whole-word matches.
+_RAW_UNSAFE_RE = re.compile(
+    r"\b(?:%s)\b" % "|".join(re.escape(t) for t in sorted(RAW_UNSAFE_TERMS, key=len, reverse=True)),
+    re.IGNORECASE,
+)
 
 
 def has_raw_unsafe_term(text: str) -> bool:
-    """True if the raw text contains a RAW_UNSAFE_TERMS word (case-insensitive)."""
-    lowered = text.lower()
-    return any(term in lowered for term in RAW_UNSAFE_TERMS)
+    """True if the raw text contains a profanity-list term as a whole word."""
+    return bool(_RAW_UNSAFE_RE.search(text))
 
 
 @dataclass
