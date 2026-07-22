@@ -24,6 +24,10 @@ from transformers import AutoProcessor, AutoModelForMultimodalLM
 MODEL_ID = os.environ.get("GEMMA4_MODEL", "google/gemma-4-E2B-it")
 CHUNK_SECONDS = 60
 DEFAULT_MAX_NEW_TOKENS = 512
+# The processor (processor_config.json) samples exactly this many frames from every
+# clip. A clip with fewer frames makes the video processor raise "num_frames=32
+# exceeds total_num_frames=N", so any chunk shorter than this is skipped.
+MIN_SAMPLE_FRAMES = 32
 
 # The reply format we parse. Kept strict and example-shaped: the model follows a
 # literal template far more reliably than a described one.
@@ -215,6 +219,28 @@ def probe_duration(path: str) -> float:
         return 0.0
 
 
+def count_frames(path: str) -> int:
+    """Number of decodable video frames in `path`, or 0 if ffprobe can't tell.
+
+    Reads the stream's nb_frames header first — accurate for the files we re-encode
+    or remux, and free (no decode). Falls back to actually counting frames only when
+    the header is missing.
+    """
+    for extra in (["-show_entries", "stream=nb_frames"],
+                  ["-count_frames", "-show_entries", "stream=nb_read_frames"]):
+        try:
+            out = subprocess.check_output(
+                ["ffprobe", "-v", "error", "-select_streams", "v:0", *extra,
+                 "-of", "default=nk=1:nw=1", path],
+                text=True, stderr=subprocess.DEVNULL,
+            ).strip()
+            if out.isdigit():
+                return int(out)
+        except Exception:
+            pass
+    return 0
+
+
 def format_timestamp(seconds: float) -> str:
     total = int(seconds)
     h, m, s = total // 3600, (total % 3600) // 60, total % 60
@@ -241,6 +267,11 @@ def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, f
     Every returned path is a normalized, video-only file — even short videos, which
     are remuxed rather than passed through, so a stray data track can't crash the
     decoder. The remux is a stream copy (~no work); only long videos pay to re-encode.
+
+    A chunk with fewer than MIN_SAMPLE_FRAMES frames is dropped, not returned: the
+    model can't sample it. This is how the sub-second trailing sliver a non-60s
+    multiple duration produces (e.g. a 180.18s video's final 0.18s / 5 frames) is
+    kept out of analysis instead of crashing it.
     """
     if duration <= CHUNK_SECONDS or duration <= 0:
         # Lossless remux: strips the extra streams without touching the frames.
@@ -250,6 +281,8 @@ def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, f
              "-c:v", "copy", dst],
             check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
         )
+        if count_frames(dst) < MIN_SAMPLE_FRAMES:
+            return []  # whole video is too short for the model to sample
         return [(0.0, duration, dst)]
 
     segments = []
@@ -267,7 +300,10 @@ def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, f
              "-c:v", "libx264", "-preset", "ultrafast", dst],
             check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
         )
-        segments.append((start, end, dst))
+        # Skip a chunk the model can't sample (a short trailing remainder). Leave the
+        # file for the caller's TemporaryDirectory to clean up.
+        if count_frames(dst) >= MIN_SAMPLE_FRAMES:
+            segments.append((start, end, dst))
         start = end
     return segments
 
