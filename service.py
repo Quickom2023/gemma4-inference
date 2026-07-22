@@ -102,8 +102,8 @@ politics = <true/false>
 TEXT_SAFETY_PROMPT = """
 {extra_rules}
 
-Vietnamese is often typed without tone marks — judge by MEANING. Flag toneless curses
-and political content (e.g. "cong san muon nam", "cong an cho chet", "phan dong").
+Vietnamese is often typed without tone marks — judge by MEANING. Flag toneless curses and political content (e.g. "cong san muon nam", "cong an cho chet", "phan dong").
+English content must also be judged by MEANING regardless of slang, leetspeak, or misspellings. Flag English curses and political content (e.g. "fuck you", "fuk", "bitch").
 <<<TEXT>>>
 {text}
 <<<END>>>"""
@@ -139,7 +139,8 @@ EXPLICIT_CURSE_TERMS = frozenset({
     "congsan", "viettan", "bantuyengiao", "tuyengiao", "bodo", "baque", "3que", "ducang",
     "cml", "clm", "cmm",
     "dcm", "dcmm", "dkm", "dkmm", "dmm",
-    "dmcs",
+    "dmcs", 
+    "fuck", "bitch", "dick", "cunt", "pussy",
 })
 
 _NON_ALNUM = re.compile(r"[^a-z0-9]+")
