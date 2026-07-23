@@ -5,21 +5,6 @@ an lon
 ancok
 ancuk
 anj cuc
-anjay
-anjing
-anjir
-anying
-asyu
-babangus
-babi
-bacol
-bacot
-bagong
-bajingan
-balegug
-banci
-bangke
-bangsat
 banh háng
 banh lol
 banh lon
@@ -27,15 +12,12 @@ bedebah
 bedegong
 belegug
 beloon
-bencong
-blo'on
 bloon
 bo me
 bo mia
 bo mie
 bo mja
 bo mje
-bodoh
 boloho
 bu buoi bo may di
 bu cu cua tao ne
@@ -98,8 +80,6 @@ chết tiệt
 chỉ trích
 chịch
 chổng mông
-cibai
-cibay
 clgt
 cmm
 cmn
@@ -138,10 +118,7 @@ condimay
 condime
 condimemay
 condi~
-conge
 congean
-congek
-congor
 conmemay
 cu lol
 cu lon
@@ -245,7 +222,6 @@ di~
 djt
 dkm
 dkmm
-dm
 dmconcho
 dmcs
 dml
@@ -267,16 +243,6 @@ duoma
 dái
 dương vật
 dương vật giả
-entot
-entotan
-ewe
-ewean
-gelo
-genjik
-germo
-goblo
-goblog
-goblok
 gái điếm
 ham lol
 ham lon
@@ -293,18 +259,11 @@ jancok
 jancuk
 jembut
 jiancok
-jilmek
-jurig
-kacung
-kampang
-kampret
-kampungan
 ke me
 ke mia
 ke mie
 ke mja
 ke mje
-kehed
 kenthu
 kentot
 kentu
@@ -361,7 +320,6 @@ me cha may
 me cha nha may
 mom lol
 mom lon
-monyet
 mu lol
 mu lon
 mát lol
@@ -388,22 +346,10 @@ mẹ kiếp
 mọe
 mồm lol
 mồm lon
-mục sư
-ndasmu
-ngehe
-ngentot
-ngewe
-nggateli
-ngocok
 ngu
 ngu lol
 ngu lon
 người da đen
-người hâm mộ
-người mách nước
-người mổ
-người tàn bạo
-người tàu
 nhu lol
 nhu lon
 nhucaidaubuoi
@@ -411,7 +357,6 @@ như con cặc
 như cái lồn
 như lol
 như lon
-những quả bóng
 niệu đạo
 nug
 nug lol
@@ -432,18 +377,6 @@ nứng
 nứng lol
 nứng lon
 occho
-pante
-pantek
-patek
-pathek
-pecun
-pecundang
-peju
-pejuh
-pelacur
-pelakor
-peler
-pepek
 phá thai
 phân
 phò
@@ -459,25 +392,18 @@ ranh lol
 ranh lon
 rảnh lol
 rảnh lon
-rầm rầm rầm
-sampah
 sapmatlol
 sapmatlon
 sapmatloz
-sepong
-sialan
 silit
 sinting
 sml
-sontoloyo
 sấp mặt
 sủa bậy
 sủa càn
 sủa tiếp
 sủa đi
 sự phá thai
-tempek
-tempik
 tet lol
 tet lon
 tetek
@@ -500,7 +426,6 @@ thằng chó đẻ
 thằng mặt lồn
 thằng điên
 thủ dâm
-tiembokne
 tinh dịch
 tinh dịcha
 tinh ranh
@@ -509,7 +434,6 @@ tiên sư bố
 tiên sư nhà mày
 tiết niệu
 tml
-toket
 tolol
 trich khong
 tung lol
@@ -525,7 +449,6 @@ tổ cha
 tổ sư
 tử cung
 ublag
-udik
 vach lol
 vach lon
 vai lol
@@ -547,8 +470,6 @@ vãi lồn
 vãi lồng
 vạch lol
 vạch lon
-vặn vít
-wingkeng
 xam lol
 xam lon
 xao lol
@@ -559,9 +480,7 @@ xuất tinh
 xàm lol
 xàm lon
 xáo trộn
-xây dựng
 xéo háng
-xì trum
 xạo lol
 xạo lon
 zái
@@ -574,7 +493,6 @@ zái
 óc chó
 ăn lol
 ăn lon
-ăn miếng trả miếng
 ăn mày
 đcm
 đcmm
