@@ -217,9 +217,40 @@ _RAW_UNSAFE_RE = re.compile(
 )
 
 
+# Symbols (dots, dashes, etc.) split a term to dodge whole-word matching:
+# "v.i.ệ.t t.â.n", "f.u.c.k". Drop symbols before matching so the pieces rejoin.
+# Spaces are KEPT — multi-word list entries ("việt tân") need them to match.
+_SYMBOL_RE = re.compile(r"[^\w\s]", re.UNICODE)
+
+
+def _strip_symbols(text: str) -> str:
+    return _SYMBOL_RE.sub("", text)
+
+
 def has_raw_unsafe_term(text: str) -> bool:
-    """True if the raw text contains a profanity-list term as a whole word."""
-    return bool(_RAW_UNSAFE_RE.search(text))
+    """True if the text contains a profanity-list term as a whole word (symbols dropped)."""
+    return bool(_RAW_UNSAFE_RE.search(_strip_symbols(text)))
+
+
+# NSFW roots/domains matched as a SUBSTRING, not whole-word — they show up glued inside
+# compounds ("pornhub", "freeporn", "pornstar") and site names that whole-word matching
+# can't reach. Only roots that NEVER occur benignly inside another word belong here:
+# "porn" is safe (no benign word contains it), but NOT "sex" (sussex/essex) or "ass"
+# (class). Extend with adult-site names as needed. Symbols are stripped first, so
+# "p.o.r.n.h.u.b" still matches.
+NSFW_SUBSTRINGS = frozenset({
+    "porn", "hentai", "xvideos", "xnxx", "xhamster", "youporn", "redtube",
+    "spankbang", "brazzers", "chaturbate", "onlyfans", "stripchat",
+})
+_NSFW_SUBSTR_RE = re.compile(
+    "|".join(re.escape(t) for t in sorted(NSFW_SUBSTRINGS, key=len, reverse=True)),
+    re.IGNORECASE,
+)
+
+
+def has_nsfw_substring(text: str) -> bool:
+    """True if the text contains an NSFW root/domain anywhere (substring, symbols dropped)."""
+    return bool(_NSFW_SUBSTR_RE.search(_strip_symbols(text)))
 
 
 # Politics phrase list (wordlists/politics.txt) — a fast deterministic pre-check for
@@ -244,8 +275,31 @@ _POLITICS_RE = re.compile(
 
 
 def has_politics_term(text: str) -> bool:
-    """True if the text contains a politics-list phrase as a whole word."""
-    return bool(_POLITICS_RE.search(text))
+    """True if the text contains a politics-list phrase as a whole word (symbols dropped)."""
+    return bool(_POLITICS_RE.search(_strip_symbols(text)))
+
+
+# Letter-spacing evasion: "t o l a m", "c o n c a c", "t.o.l.a.m". Each letter becomes
+# its own word, so whole-word matching can't see the term. We collapse ONLY runs of
+# single letters (3+, separated by one space/symbol) and check the joined form against
+# space-removed term spellings. Because only single-letter runs are collapsed, ordinary
+# spaced text ("con cua càng to") is never de-spaced — so no cross-word-junction FPs.
+# Terms shorter than 4 chars are excluded (a spelled-out "a b c" shouldn't fire).
+_DESPACED_UNSAFE = frozenset(
+    d for d in (t.replace(" ", "") for t in (RAW_UNSAFE_TERMS | POLITICS_TERMS))
+    if len(d) >= 4
+)
+_SPACED_RUN_RE = re.compile(r"\b\w(?: \w){2,}\b")
+
+
+def has_spaced_letter_term(text: str) -> bool:
+    """True if a space/symbol-separated letter run spells an unsafe/politics term."""
+    norm = re.sub(r"[^\w\s]", " ", text.lower())   # symbols -> space, so "t.o.l.a.m" counts too
+    for m in _SPACED_RUN_RE.finditer(norm):
+        joined = m.group(0).replace(" ", "")
+        if any(d in joined for d in _DESPACED_UNSAFE):
+            return True
+    return False
 
 
 @dataclass
@@ -539,7 +593,9 @@ class VideoAnalyzer:
         """
         # Deterministic pre-check: a known curse (normalized or raw) or a politics
         # phrase short-circuits to unsafe, no model.
-        if has_explicit_curse(text) or has_raw_unsafe_term(text) or has_politics_term(text):
+        if (has_explicit_curse(text) or has_raw_unsafe_term(text)
+                or has_politics_term(text) or has_nsfw_substring(text)
+                or has_spaced_letter_term(text)):
             return True
 
         messages = [{

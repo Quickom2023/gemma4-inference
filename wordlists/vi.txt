@@ -98,14 +98,12 @@ con cac
 con cặc
 con di cho
 con di cho'
-con hoang
 con lol
 con lon
 con me may
 con mặt lồn
 con mẹ
 con mẹ mày
-con trai
 con điếm
 con đĩ
 khốn nạn
@@ -164,7 +162,6 @@ dcmmmm
 dech
 dee chaw
 deet miee maii
-dell
 dell an
 dell biet
 dell biết
@@ -602,3 +599,6 @@ dijt
 cacwj
 loonf
 me may beo
+tolam
+t o l a m
+vl
