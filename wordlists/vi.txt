@@ -145,6 +145,7 @@ con mẹ mày
 con trai
 con điếm
 con đĩ
+khốn nạn
 concac
 concak
 concu
@@ -174,7 +175,6 @@ cái lol
 cái lon
 cái lề gì thốn
 cái lờ
-có
 công việc thổi
 cđĩ
 cười ẻ
@@ -233,7 +233,6 @@ dell đi
 dell được
 dellhieukieugi
 dellnoinhieu
-deo
 deohieukieugi
 di me
 dilol
@@ -796,5 +795,3 @@ dijt
 cacwj
 loonf
 me may beo
-chet
-dien

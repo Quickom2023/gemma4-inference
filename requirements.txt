@@ -18,3 +18,8 @@ uvicorn[standard]
 python-multipart   # required by FastAPI for multipart/form-data uploads
 
 httpx
+
+# Keyframe-OCR safety backstop (service.py). Needs the Tesseract system binary +
+# Vietnamese language pack installed separately — see README. Without them the
+# backstop just disables itself.
+pytesseract

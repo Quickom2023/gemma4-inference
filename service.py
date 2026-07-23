@@ -7,6 +7,7 @@ Videos longer than CHUNK_SECONDS are split with ffmpeg and fed to the model one
 chunk at a time; the per-chunk descriptions are concatenated under their
 timestamps, and the safety flags are OR-ed into a single verdict.
 """
+import glob
 import os
 import re
 import shutil
@@ -21,6 +22,16 @@ from dataclasses import dataclass, field
 import torch
 from transformers import AutoProcessor, AutoModelForMultimodalLM
 
+# Optional keyframe-OCR backstop deps. Missing any of them just disables the backstop
+# (the video still gets its normal visual + transcription safety checks).
+try:
+    import numpy as np
+    import pytesseract
+    from PIL import Image
+    _OCR_AVAILABLE = shutil.which("tesseract") is not None
+except ImportError:
+    _OCR_AVAILABLE = False
+
 MODEL_ID = os.environ.get("GEMMA4_MODEL", "google/gemma-4-E2B-it")
 CHUNK_SECONDS = 60
 DEFAULT_MAX_NEW_TOKENS = 512
@@ -28,6 +39,15 @@ DEFAULT_MAX_NEW_TOKENS = 512
 # clip. A clip with fewer frames makes the video processor raise "num_frames=32
 # exceeds total_num_frames=N", so any chunk shorter than this is skipped.
 MIN_SAMPLE_FRAMES = 32
+
+# Keyframe-OCR backstop: a silent, text-heavy video (e.g. a political news screenshot)
+# can pass the visual gate because the model can't read small overlay text at video
+# resolution (video frames get ~70 soft tokens vs 280 for a still image). When the
+# visual pass finds no politics, OCR the most text-dense frames and re-judge the text.
+KEYFRAME_OCR_COUNT = 3        # OCR this many of the most text-dense frames
+KEYFRAME_SAMPLE_FPS = 1.0     # candidate frames per second to score for text density
+KEYFRAME_MAX_CANDIDATES = 60  # cap total candidates so long videos stay fast (see below)
+OCR_LANG = "vie+eng"
 
 # The reply format we parse. Kept strict and example-shaped: the model follows a
 # literal template far more reliably than a described one.
@@ -202,6 +222,32 @@ def has_raw_unsafe_term(text: str) -> bool:
     return bool(_RAW_UNSAFE_RE.search(text))
 
 
+# Politics phrase list (wordlists/politics.txt) — a fast deterministic pre-check for
+# political content, separate from the nsfw profanity lists above. Toned + toneless
+# Vietnamese, English, and leetspeak, 1-4 words each. Whole-word matched like the
+# profanity lists, so short toneless entries (e.g. "cong san") can't fire inside an
+# unrelated word. A hit short-circuits check_text to "unsafe" without the model.
+_POLITICS_FILE = "politics.txt"
+
+
+def _load_politics_terms() -> frozenset[str]:
+    path = os.path.join(_WORDLIST_DIR, _POLITICS_FILE)
+    with open(path, encoding="utf-8") as f:
+        return frozenset(t for t in (line.strip().lower() for line in f) if t)
+
+
+POLITICS_TERMS = _load_politics_terms()
+_POLITICS_RE = re.compile(
+    r"\b(?:%s)\b" % "|".join(re.escape(t) for t in sorted(POLITICS_TERMS, key=len, reverse=True)),
+    re.IGNORECASE,
+)
+
+
+def has_politics_term(text: str) -> bool:
+    """True if the text contains a politics-list phrase as a whole word."""
+    return bool(_POLITICS_RE.search(text))
+
+
 @dataclass
 class ChunkResult:
     start: float
@@ -331,6 +377,74 @@ def split_video(path: str, duration: float, workdir: str) -> list[tuple[float, f
     return segments
 
 
+def _frame_text_density(path: str) -> float:
+    """Fraction of pixels sitting on a sharp edge — high for text-dense frames.
+
+    Text is dense, regular high-contrast strokes, so a caption-heavy frame scores
+    far above a plain photo/face. Cheap: grayscale + neighbor differences, no cv2.
+    """
+    g = np.asarray(Image.open(path).convert("L"), dtype=np.float32)
+    gx = np.abs(np.diff(g, axis=1))[:-1, :]
+    gy = np.abs(np.diff(g, axis=0))[:, :-1]
+    return float(((gx > 40) | (gy > 40)).mean())
+
+
+def ocr_keyframes(media_path: str, n: int = KEYFRAME_OCR_COUNT) -> str:
+    """Return de-duplicated OCR text from the `n` most text-dense frames of a video.
+
+    Samples candidate frames, ranks them by text density, and runs Tesseract
+    (Vietnamese + English) on the top `n`. CPU-only — never touches the GPU. Returns
+    '' when OCR is unavailable or no frames could be extracted.
+
+    The candidate pool is capped at KEYFRAME_MAX_CANDIDATES: on a long video the
+    sampling rate is lowered so extraction + scoring stay flat instead of growing
+    with duration (fps=1 on a 30-min video would otherwise be ~1800 frames).
+    """
+    if not _OCR_AVAILABLE:
+        return ""
+    duration = probe_duration(media_path)
+    fps = KEYFRAME_SAMPLE_FPS
+    if duration > 0:
+        fps = min(KEYFRAME_SAMPLE_FPS, KEYFRAME_MAX_CANDIDATES / duration)
+    with tempfile.TemporaryDirectory(prefix="gemma4_ocr_") as workdir:
+        subprocess.run(
+            ["ffmpeg", "-v", "error", "-y", "-i", media_path,
+             "-vf", f"fps={fps:.6f}",
+             os.path.join(workdir, "cand_%04d.jpg")],
+            check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+        )
+        candidates = glob.glob(os.path.join(workdir, "cand_*.jpg"))
+        if not candidates:
+            return ""
+        candidates.sort(key=_frame_text_density, reverse=True)
+        return _ocr_lines(candidates[:n])
+
+
+def _ocr_lines(image_paths: list[str]) -> str:
+    """OCR each image (Vietnamese + English) and join unique non-empty lines."""
+    lines: list[str] = []
+    seen: set[str] = set()
+    for path in image_paths:
+        text = pytesseract.image_to_string(Image.open(path), lang=OCR_LANG)
+        for line in text.splitlines():
+            line = line.strip()
+            if line and line.lower() not in seen:
+                seen.add(line.lower())
+                lines.append(line)
+    return "\n".join(lines)
+
+
+def ocr_image(image_path: str) -> str:
+    """OCR a single still image. Returns '' when OCR is unavailable.
+
+    An image is analyzed at full resolution, so no frame sampling or text-density
+    ranking is needed — just read the one file. CPU-only, never touches the GPU.
+    """
+    if not _OCR_AVAILABLE:
+        return ""
+    return _ocr_lines([image_path])
+
+
 def _parse_flag(name: str, text: str) -> bool:
     m = re.search(rf"^\s*{name}\s*[=:]\s*(true|false|yes|no)\b",
                   text, re.IGNORECASE | re.MULTILINE)
@@ -423,9 +537,9 @@ class VideoAnalyzer:
         It still takes the GPU lock, so it queues behind any video the model is
         working on rather than truly running alongside it.
         """
-        # Deterministic pre-check: a known curse (normalized or raw) short-circuits
-        # to unsafe, no model.
-        if has_explicit_curse(text) or has_raw_unsafe_term(text):
+        # Deterministic pre-check: a known curse (normalized or raw) or a politics
+        # phrase short-circuits to unsafe, no model.
+        if has_explicit_curse(text) or has_raw_unsafe_term(text) or has_politics_term(text):
             return True
 
         messages = [{
@@ -498,6 +612,18 @@ class VideoAnalyzer:
                     progress(len(result.chunks), len(segments))
 
         result.description = "\n\n".join(parts).strip()
+
+        # Keyframe-OCR backstop. The visual pass reads video frames at low resolution,
+        # so it misses small on-screen text (a silent political-news screenshot slips
+        # through). Only when it found no politics: OCR the most text-dense frames and
+        # re-judge the extracted text through the same gate the transcription uses. Runs
+        # outside the GPU lock (Tesseract is CPU); check_text takes the lock itself.
+        if not result.politics:
+            ocr_text = ocr_keyframes(media_path, KEYFRAME_OCR_COUNT)
+            print(f"Keyframe OCR text:\n{ocr_text}\n")
+            if ocr_text and self.check_text(ocr_text):
+                result.politics = True
+
         result.preprocess_s = round(result.preprocess_s, 3)
         result.generate_s = round(result.generate_s, 3)
         return result
@@ -529,4 +655,14 @@ class VideoAnalyzer:
                 ChunkResult(0.0, 0.0, description, nudity, nsfw, politics))
             if progress:
                 progress(1, 1)
+
+        # Keyframe-OCR backstop, same as the video path: the model can't read small,
+        # dense on-screen text even at image resolution, so a text-heavy political
+        # screenshot slips through. Only when it found no politics: OCR the image and
+        # re-judge. Outside the GPU lock — check_text takes the lock itself.
+        if not result.politics:
+            ocr_text = ocr_image(image_path)
+            if ocr_text and self.check_text(ocr_text):
+                result.politics = True
+
         return result
