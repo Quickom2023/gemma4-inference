@@ -67,9 +67,6 @@ bỏ mje
 bỏ mẹ
 bỏ mịa
 bỏ mịe
-bố láo
-bực mình
-cac
 cacc
 cai lol
 cai lon
@@ -95,7 +92,6 @@ chet mje
 chetme
 chich
 chich choac
-châm
 chích
 chó cái
 chó má
@@ -125,7 +121,6 @@ colai
 colay
 coli
 colmek
-con bic
 con bán hoa
 con bíc
 con bích
@@ -160,7 +155,6 @@ congean
 congek
 congor
 conmemay
-cu
 cu lol
 cu lon
 cuccut
@@ -289,7 +283,6 @@ du mot minh
 duo má
 duoma
 dái
-dính máu
 dương vật
 dương vật giả
 entot
@@ -308,9 +301,6 @@ goblo
 goblog
 goblok
 goo
-gà
-gà hút
-gà trống
 gái
 gái điếm
 ham lol
@@ -320,9 +310,6 @@ hencet
 henceut
 heunceut
 hiếp dâm
-hoa hồng
-homo
-hoành hành
 hãm
 húp sò
 hậu môn
@@ -358,7 +345,6 @@ kimak
 kintil
 kirik
 kiu
-kiêm
 konti
 kontol
 kopet
@@ -394,14 +380,9 @@ láo chó
 lìn
 lòi lol
 lòi lon
-lòng tốt
-lông
-lắp
 lếu lều
 lồn
-lồng
 lỗ đít
-lộn xuống
 lờ
 lời nói dâm dục
 lừa
@@ -426,10 +407,8 @@ mu lon
 má
 mát lol
 mát lon
-mâu thuẫn
 mé
 môi âm
-mông
 mõm lol
 mõm lon
 mút hạt của tôi
@@ -452,7 +431,6 @@ mọe
 mồm lol
 mồm lon
 mục sư
-ndas
 ndasmu
 ngehe
 ngentot
@@ -468,7 +446,6 @@ người mách nước
 người mổ
 người tàn bạo
 người tàu
-ngực
 nhu lol
 nhu lon
 nhucaidaubuoi
@@ -491,13 +468,11 @@ nuốt
 nyepong
 núm
 núm vú
-nỉ
 nốn lừng
 nội dung khiêu dâm
 nứng
 nứng lol
 nứng lon
-nữ thần
 occho
 pante
 pantek
@@ -529,7 +504,6 @@ rảnh lol
 rảnh lon
 rầm rầm rầm
 sampah
-sap mat
 sapmatlol
 sapmatlon
 sapmatloz
@@ -549,13 +523,10 @@ sủa đi
 sứt mẻ
 sừng
 sự phá thai
-tai
-taik
 tempek
 tempik
 tet lol
 tet lon
-tete
 tetek
 thang cho
 thang cho'
@@ -581,7 +552,6 @@ thằng mặt lồn
 thằng điên
 thủ dâm
 tiembokne
-tinh
 tinh dịch
 tinh dịcha
 tinh ranh
@@ -603,16 +573,12 @@ tuoi lon
 tuyệt vời
 tuổi lol
 tuổi lon
-tàn bạo
-tào lao
 tét lol
 tét lon
 tình dục
-túi bóng
 tổ cha
 tổ sư
 tử cung
-tự cao tự đại
 ublag
 udik
 vach lol
@@ -642,7 +608,6 @@ vạch lol
 vạch lon
 vặn vít
 wingkeng
-x đánh giá
 xam lol
 xam lon
 xao lol
@@ -656,10 +621,8 @@ xàm lol
 xàm lon
 xáo trộn
 xây dựng
-xé
 xéo háng
 xì trum
-xó
 xạo lol
 xạo lon
 zái
@@ -670,12 +633,10 @@ zái
 âm vật
 âm đạo
 óc chó
-ôm
 ăn lol
 ăn lon
 ăn miếng trả miếng
 ăn mày
-đ'
 đcm
 đcmm
 đcmmm
@@ -707,7 +668,6 @@ zái
 đã ngủ
 đél
 đéo
-đê
 đê ca mờ
 đê ma ma
 đê mama
