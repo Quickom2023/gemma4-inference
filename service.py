@@ -253,18 +253,28 @@ def has_nsfw_substring(text: str) -> bool:
     return bool(_NSFW_SUBSTR_RE.search(_strip_symbols(text)))
 
 
-# Politics phrase list (wordlists/politics.txt) — a fast deterministic pre-check for
-# political content, separate from the nsfw profanity lists above. Toned + toneless
-# Vietnamese, English, and leetspeak, 1-4 words each. Whole-word matched like the
-# profanity lists, so short toneless entries (e.g. "cong san") can't fire inside an
-# unrelated word. A hit short-circuits check_text to "unsafe" without the model.
-_POLITICS_FILE = "politics.txt"
+# Politics phrase list(s) — a fast deterministic pre-check for political content,
+# separate from the nsfw profanity lists above. Toned + toneless Vietnamese, English,
+# and leetspeak, 1-4 words each. Whole-word matched like the profanity lists, so short
+# toneless entries (e.g. "cong san") can't fire inside an unrelated word. A hit
+# short-circuits check_text to "unsafe" without the model.
+#
+# politics.txt        — sensitive/anti-state/territorial/ideology terms (always on).
+# politics_officials.txt — official NAMES + role/office TITLES. These over-flag neutral
+#   news, so they live in a separate file: delete or rename it to disable that tier in
+#   prod (the loader silently skips any file that isn't present).
+_POLITICS_FILES = ("politics.txt", "politics_officials.txt")
 
 
 def _load_politics_terms() -> frozenset[str]:
-    path = os.path.join(_WORDLIST_DIR, _POLITICS_FILE)
-    with open(path, encoding="utf-8") as f:
-        return frozenset(t for t in (line.strip().lower() for line in f) if t)
+    terms: set[str] = set()
+    for name in _POLITICS_FILES:
+        path = os.path.join(_WORDLIST_DIR, name)
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            terms.update(t for t in (line.strip().lower() for line in f) if t)
+    return frozenset(terms)
 
 
 POLITICS_TERMS = _load_politics_terms()

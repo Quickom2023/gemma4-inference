@@ -13,69 +13,11 @@ authoritarian state
 b13u t1nh
 b4c h0
 ba que
-bac ho
 bai tu chinh
-ban bi thu
-ban bí thư
-ban dan van
-ban dân vận
-ban noi chinh
-ban nội chính
-ban tuyen giao
-ban tuyên giáo
 bao dong lat do
 bao loan
 bat dong chinh kien
 bau cu quoc hoi
-bi thu an giang
-bi thu bac giang
-bi thu bac kan
-bi thu bac lieu
-bi thu bac ninh
-bi thu ben tre
-bi thu binh phuoc
-bi thu binh thuan
-bi thu ca mau
-bi thu cao bang
-bi thu dak lak
-bi thu dak nong
-bi thu dang uy
-bi thu dong thap
-bi thu gia lai
-bi thu ha giang
-bi thu ha nam
-bi thu ha tinh
-bi thu hai duong
-bi thu hau giang
-bi thu huyen uy
-bi thu khanh hoa
-bi thu kien giang
-bi thu kon tum
-bi thu lai chau
-bi thu lam dong
-bi thu lang son
-bi thu lao cai
-bi thu nghe an
-bi thu ninh binh
-bi thu ninh thuan
-bi thu phu tho
-bi thu phu yen
-bi thu quang binh
-bi thu quang ninh
-bi thu quang tri
-bi thu soc trang
-bi thu son la
-bi thu tay ninh
-bi thu thai binh
-bi thu thanh uy
-bi thu tien giang
-bi thu tinh uy
-bi thu tra vinh
-bi thu trung uong
-bi thu tuyen quang
-bi thu vinh long
-bi thu vinh phuc
-bi thu yen bai
 bien dong
 bieu tinh
 bieu tinh on hoa
@@ -83,88 +25,17 @@ bieu tinh phan doi
 biểu tình
 biểu tình phản đối
 biểu tình ôn hòa
-bo chinh tri
-bo cong an
-bo doi
-bo doi bien phong
-bo ngoai giao
-bo noi vu
-bo quoc phong
-bo truong
-bo tu phap
 bo xit tay nguyen
 boi nho che do
 boi nho lanh dao
-bot ban
-bot bẩn
-bui thi minh hoai
-bác hồ
-bác hồ vĩ đại
 bãi tư chính
-bí thư an giang
-bí thư bình phước
-bí thư bình thuận
-bí thư bạc liêu
-bí thư bắc giang
-bí thư bắc kạn
-bí thư bắc ninh
-bí thư bến tre
-bí thư cao bằng
-bí thư cà mau
-bí thư gia lai
-bí thư huyện ủy
-bí thư hà giang
-bí thư hà nam
-bí thư hà tĩnh
-bí thư hải dương
-bí thư hậu giang
-bí thư khánh hòa
-bí thư kiên giang
-bí thư kon tum
-bí thư lai châu
-bí thư lào cai
-bí thư lâm đồng
-bí thư lạng sơn
-bí thư nghệ an
-bí thư ninh bình
-bí thư ninh thuận
-bí thư phú thọ
-bí thư phú yên
-bí thư quảng bình
-bí thư quảng ninh
-bí thư quảng trị
-bí thư sóc trăng
-bí thư sơn la
-bí thư thành ủy
-bí thư thái bình
-bí thư tiền giang
-bí thư trung ương
-bí thư trà vinh
-bí thư tuyên quang
-bí thư tây ninh
-bí thư tỉnh ủy
-bí thư vĩnh long
-bí thư vĩnh phúc
-bí thư yên bái
-bí thư đảng ủy
-bí thư đắk lắk
-bí thư đắk nông
-bí thư đồng tháp
 bô xít tây nguyên
 bôi nhọ chế độ
 bôi nhọ lãnh đạo
-bùi thị minh hoài
 bạo loạn
 bạo động lật đổ
 bất đồng chính kiến
 bầu cử quốc hội
-bộ chính trị
-bộ công an
-bộ ngoại giao
-bộ nội vụ
-bộ quốc phòng
-bộ trưởng
-bộ tư pháp
 c0mmun15t
 c0ng 4n
 c0ng 54n
@@ -176,22 +47,15 @@ cach mang thang tam
 cach mang vo san
 cai cach ruong dat
 cai tao tap trung
-can bo lanh dao
-canh sat
-canh sat bien
-canh sat co dong
-canh sat giao thong
 central committee
 ch0ng c0ng
 ch1nh quy3n
-chanh an
 che do doc tai
 chi bo dang
 chi bộ đảng
 chi thi cua dang
 chinese aggression
 chinh phu
-chinh uy
 chong che do
 chong cong
 chong doi chinh quyen
@@ -203,26 +67,11 @@ chu nghia cong san
 chu nghia de quoc
 chu nghia tu ban
 chu nghia xa hoi
-chu ngoc anh
-chu ngọc anh
-chu nhiem uy ban
 chu t1ch nu0c
-chu tich can tho
-chu tich da nang
-chu tich ha noi
-chu tich hai phong
-chu tich hue
-chu tich huyen
-chu tich mat tran
-chu tich nuoc
-chu tich quoc hoi
-chu tich tinh
 chuyen bay giai cuu
 chuyen chinh vo san
 chuyên chính vô sản
 chuyến bay giải cứu
-chánh án
-chính ủy
 chế độ độc tài
 chống chế độ
 chống cộng
@@ -231,17 +80,6 @@ chống phá chế độ
 chống phá nhà nước
 chống tham nhũng
 chống đối chính quyền
-chủ nhiệm ủy ban
-chủ tịch cần thơ
-chủ tịch huyện
-chủ tịch huế
-chủ tịch hà nội
-chủ tịch hải phòng
-chủ tịch mặt trận
-chủ tịch nước
-chủ tịch quốc hội
-chủ tịch tỉnh
-chủ tịch đà nẵng
 city party committee
 civil society
 class struggle
@@ -292,13 +130,9 @@ da dao
 da dao cong san
 da nguyen da dang
 dai an tham nhung
-dai bieu hoi dong
-dai bieu quoc hoi
 dai hoi dang
 dai hoi muoi ba
 dai hoi muoi bon
-dai tuong
-dai tuong luong cuong
 dan ap
 dan ap bieu tinh
 dan ap ton giao
@@ -316,7 +150,6 @@ dang uy
 danh do che do
 danh do cong san
 dao chinh
-dao duc cach mang
 dau tranh chinh tri
 dau tranh dan chu
 dau tranh giai cap
@@ -328,27 +161,13 @@ deputy prime minister
 dien bien hoa binh
 diet cong
 dinh cong chinh tri
-dinh la thang
-dinh the huynh
-dinh tien dung
 dissident movement
 diệt cộng
-do muoi
-do van chien
-doan van vuon
-doc dang
-doc lap tu do
-doc tai
-doi dan chu
-doi moi
-doi nhan quyen
-doi tu do
 dong tam
 dot lo
 down with government
 down with the party
 du luat dac khu
-duong loi dang
 duong luoi bo
 dân oan
 dân oan mất đất
@@ -373,19 +192,15 @@ giai cấp vô sản
 giai phong dan toc
 giai phong mien nam
 gian diep chinh tri
-gian khoan
-giàn khoan
 gián điệp chính trị
 gây rối trật tự
 gạc ma
 hai chien hoang sa
 hai chien truong sa
 hammer and sickle
-ho chu tich
 hoang sa
 hoang trung hai
 hoat dong chinh tri
-hoc tap lam theo
 hoc vien chinh tri
 hoi cuu chien binh
 hoi dong nhan dan
@@ -396,8 +211,6 @@ hum4n r1ght5
 human rights
 human rights abuse
 human rights activist
-huyen uy
-huyện ủy
 hội cựu chiến binh
 inspection commission
 keu goi bieu tinh
@@ -413,42 +226,22 @@ kích động bạo loạn
 l4t d0
 labor union
 land grab
-lanh dao cap cao
-lanh dao dang
-lanh dao nha nuoc
 lat do
 lat do che do
 lat do chinh quyen
 lat do nha nuoc
-le dinh kinh
-le duan
-le duc tho
-le hoang quan
-le kha phieu
-le minh hung
-le minh khai
-le thanh hai
 luat an ninh mang
 luat dac khu
 luc luong vu trang
-luong cuong
-luong tam quang
 ly khai
 ly khai dan toc
 ly khai dân tộc
 ly luan chinh tri
-lê minh hưng
-lương cường
-lương tam quang
 lật đổ
 lật đổ chính quyền
 lật đổ chế độ
 lật đổ nhà nước
 lực lượng vũ trang
-mai tien dung
-mai tiến dũng
-trần dần
-tran dan
 marxist ideology
 marxist regime
 ministry of national defense
@@ -461,43 +254,6 @@ national congress
 national defense
 national liberation
 national security law
-ngo xuan lich
-nguyen bac son
-nguyen chu tich nuoc
-nguyen duc chung
-nguyen duy ngoc
-nguyen hoa binh
-nguyen minh triet
-nguyen phu trong
-nguyen tan dung
-nguyen thanh long
-nguyen thi kim ngan
-nguyen thien nhan
-nguyen thu tuong
-nguyen tong bi thu
-nguyen trong nghia
-nguyen van binh
-nguyen van linh
-nguyen van nen
-nguyen xuan phuc
-nguyen xuan thang
-nguyễn bắc son
-nguyễn duy ngọc
-nguyễn hòa bình
-nguyễn minh triết
-nguyễn phú trọng
-nguyễn thanh long
-nguyễn thiện nhân
-nguyễn thị kim ngân
-nguyễn trọng nghĩa
-nguyễn tấn dũng
-nguyễn văn bình
-nguyễn văn linh
-nguyễn văn nên
-nguyễn xuân phúc
-nguyễn xuân thắng
-nguyễn đức chung
-ngô xuân lịch
 nh4 nu0c
 nh4n quy3n
 nhan quyen
@@ -505,12 +261,8 @@ nhân quyền
 nine dash line
 noi xau dang
 noi xau lanh dao
-nong duc manh
 nói xấu lãnh đạo
 nói xấu đảng
-nông đức mạnh
-on dang
-on dang on bac
 one party rule
 one party state
 one party system
@@ -533,27 +285,14 @@ people's court
 ph4n d0ng
 ph4n qu0c
 pha hoai chinh tri
-pham binh minh
-pham minh chinh
-pham van dong
 phan boi to quoc
 phan cach mang
-phan dinh trac
 phan doi chinh quyen
 phan dong
 phan quoc
-phan van giang
-phan văn giang
-phan đình trạc
-pho chu tich nuoc
-pho thu tuong
 phong trao dan chu
 phong trào dân chủ
-phung xuan nha
 phá hoại chính trị
-phùng xuân nhạ
-phạm bình minh
-phạm minh chính
 phản bội tổ quốc
 phản cách mạng
 phản quốc
@@ -616,242 +355,65 @@ supreme procuracy
 surveillance state
 t0 l4m
 t0ng b1 thu
-tam guong dao duc
 tap trung dan chu
-tat thanh cang
 territorial dispute
-tham nhung
 tham nhũng
 tham sat hue
-thanh uy
-thanh uy can tho
-thanh uy da nang
-thanh uy ha noi
-thanh uy hai phong
-thanh uy hue
 the luc thu dich
 the party congress
-theo dang
-theo đảng
 thoat trung
 thong nhat dat nuoc
 thoát trung
 thu dich chinh tri
-thu thiem
-thu truong
-thu tuong
-thu tuong chinh phu
-thuong tuong
-thuyen nhan
-thuyền nhân
-thành ủy
-thành ủy cần thơ
-thành ủy huế
-thành ủy hà nội
-thành ủy hải phòng
-thành ủy đà nẵng
 thù địch chính trị
-thượng tướng
 thảm sát huế
 thế lực thù địch
-thủ tướng
-thủ tướng chính phủ
-thứ trưởng
-tinh uy
-tinh uy an giang
-tinh uy bac giang
-tinh uy bac kan
-tinh uy bac lieu
-tinh uy bac ninh
-tinh uy ben tre
-tinh uy binh phuoc
-tinh uy binh thuan
-tinh uy ca mau
-tinh uy cao bang
-tinh uy dak lak
-tinh uy dak nong
-tinh uy dong thap
-tinh uy gia lai
-tinh uy ha giang
-tinh uy ha nam
-tinh uy ha tinh
-tinh uy hai duong
-tinh uy hau giang
-tinh uy khanh hoa
-tinh uy kien giang
-tinh uy kon tum
-tinh uy lai chau
-tinh uy lam dong
-tinh uy lang son
-tinh uy lao cai
-tinh uy nghe an
-tinh uy ninh binh
-tinh uy ninh thuan
-tinh uy phu tho
-tinh uy phu yen
-tinh uy quang binh
-tinh uy quang ninh
-tinh uy quang tri
-tinh uy soc trang
-tinh uy son la
-tinh uy tay ninh
-tinh uy thai binh
-tinh uy tien giang
-tinh uy tra vinh
-tinh uy tuyen quang
-tinh uy vinh long
-tinh uy vinh phuc
-tinh uy yen bai
 to chuc khung bo
 to chuc phan dong
-toa an
 toa an nhan dan
-toan tri
-ton duc thang
-tong bi thu
 tong cuc an ninh
 tong cuc chinh tri
-tong tham muu truong
 topple the government
 totalitarian regime
 totalitarian state
-tran cam tu
-tran dai quang
-tran hong ha
-tran quoc vuong
-tran thanh man
-trinh xuan thanh
 trung quoc xam luoc
 trung quốc xâm lược
 trung uong dang
 trung voi dang
 trung với đảng
 trung ương đảng
-truong ban noi chinh
-truong ban to chuc
-truong ban tuyen giao
-truong chinh
 truong dang
-truong minh tuan
 truong sa
-truong thi mai
-trương minh tuấn
-trương thị mai
-trường chinh
 trường sa
 trường đảng
-trưởng ban nội chính
-trưởng ban tuyên giáo
-trưởng ban tổ chức
-trần cẩm tú
-trần hồng hà
-trần quốc vượng
-trần thanh mẫn
-trần đại quang
-trịnh xuân thanh
-tu chuyen hoa
-tu dien bien
-tu do bao chi
-tu do ngon luan
-tu do ton giao
-tu lenh quan khu
 tu nhan chinh tri
 tu nhan luong tam
 tu tap dong nguoi
-tu tuong dao duc
 tòa án nhân dân
-tôn đức thắng
 tù nhân chính trị
 tù nhân lương tâm
-tư lệnh quân khu
-tư tưởng đạo đức
-tấm gương đạo đức
-tất thành cang
 tập trung dân chủ
 tết mậu thân
-tỉnh ủy an giang
-tỉnh ủy bình phước
-tỉnh ủy bình thuận
-tỉnh ủy bạc liêu
-tỉnh ủy bắc giang
-tỉnh ủy bắc kạn
-tỉnh ủy bắc ninh
-tỉnh ủy bến tre
-tỉnh ủy cao bằng
-tỉnh ủy cà mau
-tỉnh ủy gia lai
-tỉnh ủy hà giang
-tỉnh ủy hà nam
-tỉnh ủy hà tĩnh
-tỉnh ủy hải dương
-tỉnh ủy hậu giang
-tỉnh ủy khánh hòa
-tỉnh ủy kiên giang
-tỉnh ủy kon tum
-tỉnh ủy lai châu
-tỉnh ủy lào cai
-tỉnh ủy lâm đồng
-tỉnh ủy lạng sơn
-tỉnh ủy nghệ an
-tỉnh ủy ninh bình
-tỉnh ủy ninh thuận
-tỉnh ủy phú thọ
-tỉnh ủy phú yên
-tỉnh ủy quảng bình
-tỉnh ủy quảng ninh
-tỉnh ủy quảng trị
-tỉnh ủy sóc trăng
-tỉnh ủy sơn la
-tỉnh ủy thái bình
-tỉnh ủy tiền giang
-tỉnh ủy trà vinh
-tỉnh ủy tuyên quang
-tỉnh ủy tây ninh
-tỉnh ủy vĩnh long
-tỉnh ủy vĩnh phúc
-tỉnh ủy yên bái
-tỉnh ủy đắk lắk
-tỉnh ủy đắk nông
-tỉnh ủy đồng tháp
 tổ chức khủng bố
 tổ chức phản động
 tổng cục an ninh
 tổng cục chính trị
-tổng tham mưu trưởng
 uprising
 uy ban kiem tra
-uy ban nhan dan
-uy vien thuong vu
-uy vien trung uong
 v13t t4n
 van phong chinh phu
 van phong trung uong
 vien kiem sat
-vien truong
 viet nam cong hoa
 viet tan
 viện kiểm sát
-viện trưởng
 việt nam cộng hòa
 việt tân
-vo nguyen giap
-vo thi anh xuan
-vo van thuong
-vung kinh te
-vuon rau loc hung
-vuong dinh hue
 vuot bien
-võ nguyên giáp
-võ thị ánh xuân
-võ văn thưởng
 văn phòng chính phủ
 văn phòng trung ương
-vương đình huệ
 vượt biên
-xa hoi chu nghia
-xa hoi dan su
 xuc pham lanh tu
-xuong duong
 xuyen tac lich su
 xuyên tạc lịch sử
 xúc phạm lãnh tụ
@@ -859,10 +421,6 @@ yellow flag
 âm mưu chính trị
 âm mưu lật đổ
 đa nguyên đa đảng
-đinh la thăng
-đinh thế huynh
-đinh tiến dũng
-đoàn văn vươn
 đàn áp biểu tình
 đàn áp tôn giáo
 đánh đổ chế độ
@@ -872,14 +430,10 @@ yellow flag
 đòi nhân quyền
 đòi tự do
 đường lối đảng
-đại biểu hội đồng
-đại biểu quốc hội
 đại hội mười ba
 đại hội mười bốn
 đại hội đảng
-đại tướng lương cường
 đại án tham nhũng
-đạo đức cách mạng
 đả đảo
 đả đảo cộng sản
 đảng cộng sản
@@ -889,9 +443,6 @@ yellow flag
 đấu tranh dân chủ
 đấu tranh giai cấp
 đốt lò
-đỗ văn chiến
 độc tài
 độc đảng
 ủy ban nhân dân
-ủy viên thường vụ
-ủy viên trung ương
