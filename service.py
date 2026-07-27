@@ -676,7 +676,6 @@ class VideoAnalyzer:
         # outside the GPU lock (Tesseract is CPU); check_text takes the lock itself.
         if not result.politics:
             ocr_text = ocr_keyframes(media_path, KEYFRAME_OCR_COUNT)
-            print(f"Keyframe OCR text:\n{ocr_text}\n")
             if ocr_text and self.check_text(ocr_text):
                 result.politics = True
 

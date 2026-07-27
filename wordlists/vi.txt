@@ -70,7 +70,6 @@ chích
 chó má
 chó điên
 chó-chó
-chậm phát triển
 chết mie
 chết mja
 chết mẹ
@@ -90,10 +89,6 @@ cokil
 colai
 colay
 colmek
-con bán hoa
-con bíc
-con bích
-con bít
 con cac
 con cặc
 con di cho
@@ -132,7 +127,6 @@ cái lol
 cái lon
 cái lề gì thốn
 cái lờ
-công việc thổi
 cđĩ
 cười ẻ
 cười ỉa
@@ -599,6 +593,4 @@ dijt
 cacwj
 loonf
 me may beo
-tolam
-t o l a m
 vl

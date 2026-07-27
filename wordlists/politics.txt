@@ -3,10 +3,6 @@
 am muu chinh tri
 am muu lat do
 an ninh
-an ninh mang
-an ninh mạng
-an ninh quoc gia
-an ninh quốc gia
 anti communist
 anti communist party
 anti corruption
@@ -18,7 +14,6 @@ b13u t1nh
 b4c h0
 ba que
 bac ho
-bac ho vi dai
 bai tu chinh
 ban bi thu
 ban bí thư
@@ -28,8 +23,6 @@ ban noi chinh
 ban nội chính
 ban tuyen giao
 ban tuyên giáo
-bao cap
-bao cấp
 bao dong lat do
 bao loan
 bat dong chinh kien
@@ -87,7 +80,6 @@ bien dong
 bieu tinh
 bieu tinh on hoa
 bieu tinh phan doi
-biển đông
 biểu tình
 biểu tình phản đối
 biểu tình ôn hòa
@@ -173,8 +165,6 @@ bộ nội vụ
 bộ quốc phòng
 bộ trưởng
 bộ tư pháp
-bộ đội
-bộ đội biên phòng
 c0mmun15t
 c0ng 4n
 c0ng 54n
@@ -232,10 +222,8 @@ chuyen chinh vo san
 chuyên chính vô sản
 chuyến bay giải cứu
 chánh án
-chính phủ
 chính ủy
 chế độ độc tài
-chỉ thị của đảng
 chống chế độ
 chống cộng
 chống nhà nước
@@ -243,10 +231,6 @@ chống phá chế độ
 chống phá nhà nước
 chống tham nhũng
 chống đối chính quyền
-chủ nghĩa cộng sản
-chủ nghĩa tư bản
-chủ nghĩa xã hội
-chủ nghĩa đế quốc
 chủ nhiệm ủy ban
 chủ tịch cần thơ
 chủ tịch huyện
@@ -289,23 +273,12 @@ cách mạng màu
 cách mạng mùa thu
 cách mạng tháng tám
 cách mạng vô sản
-cán bộ lãnh đạo
-còn đảng còn mình
-công an
-công an nhân dân
-cương lĩnh đảng
 cưỡng chế đất
 cải cách ruộng đất
-cải tạo tập trung
-cảnh sát
-cảnh sát biển
-cảnh sát cơ động
-cảnh sát giao thông
 cộng sản
 cộng sản muôn năm
 cờ vàng
 cờ vàng ba sọc
-cục an ninh
 cực đoan chính trị
 d0c t41
 d0wn w1th th3 g0v3rnm3nt
@@ -359,7 +332,6 @@ dinh la thang
 dinh the huynh
 dinh tien dung
 dissident movement
-diễn biến hòa bình
 diệt cộng
 do muoi
 do van chien
@@ -378,10 +350,8 @@ down with the party
 du luat dac khu
 duong loi dang
 duong luoi bo
-dân chủ
 dân oan
 dân oan mất đất
-dân quân tự vệ
 dự luật đặc khu
 fall of saigon
 fatherland front
@@ -406,8 +376,6 @@ gian diep chinh tri
 gian khoan
 giàn khoan
 gián điệp chính trị
-giải phóng dân tộc
-giải phóng miền nam
 gây rối trật tự
 gạc ma
 hai chien hoang sa
@@ -424,40 +392,24 @@ hoi dong nhan dan
 hoi nghi trung uong
 hoi nong dan
 hop tac xa
-hoàng sa
-hoàng trung hải
-hoạt động chính trị
 hum4n r1ght5
 human rights
 human rights abuse
 human rights activist
 huyen uy
 huyện ủy
-hải chiến hoàng sa
-hải chiến trường sa
-học tập làm theo
-học viện chính trị
-hồ chủ tịch
 hội cựu chiến binh
-hội nghị trung ương
-hội nông dân
-hội đồng nhân dân
-hợp tác xã
 inspection commission
 keu goi bieu tinh
 khung bo nha nuoc
 khủng bố nhà nước
 kich dong bao loan
 kich dong bieu tinh
-kinh te moi
-kinh tế mới
 kit test viet a
 kit test việt á
 ky hop quoc hoi
-kêu gọi biểu tình
 kích động biểu tình
 kích động bạo loạn
-kỳ họp quốc hội
 l4t d0
 labor union
 land grab
@@ -481,24 +433,11 @@ luat dac khu
 luc luong vu trang
 luong cuong
 luong tam quang
-luật an ninh mạng
-luật đặc khu
 ly khai
 ly khai dan toc
 ly khai dân tộc
 ly luan chinh tri
-lãnh đạo cấp cao
-lãnh đạo nhà nước
-lãnh đạo đảng
-lê duẩn
-lê hoàng quân
-lê khả phiêu
 lê minh hưng
-lê minh khái
-lê thanh hải
-lê đình kình
-lê đức thọ
-lý luận chính trị
 lương cường
 lương tam quang
 lật đổ
@@ -512,24 +451,16 @@ trần dần
 tran dan
 marxist ideology
 marxist regime
-mat tran to quoc
 ministry of national defense
 ministry of public security
 mu0n n4m
 multiparty democracy
 municipal committee
-mặt trận tổ quốc
 national assembly
 national congress
 national defense
 national liberation
 national security law
-ngay quoc khanh
-ngay thanh lap dang
-nghi quyet dang
-nghi quyet trung uong
-nghị quyết trung ương
-nghị quyết đảng
 ngo xuan lich
 nguyen bac son
 nguyen chu tich nuoc
@@ -550,9 +481,6 @@ nguyen van linh
 nguyen van nen
 nguyen xuan phuc
 nguyen xuan thang
-nguyên chủ tịch nước
-nguyên thủ tướng
-nguyên tổng bí thư
 nguyễn bắc son
 nguyễn duy ngọc
 nguyễn hòa bình
@@ -569,22 +497,12 @@ nguyễn văn nên
 nguyễn xuân phúc
 nguyễn xuân thắng
 nguyễn đức chung
-ngày quốc khánh
-ngày thành lập đảng
 ngô xuân lịch
 nh4 nu0c
 nh4n quy3n
-nha hoat dong
-nha nuoc
 nhan quyen
-nhan van giai pham
-nhà hoạt động
-nhà nước
 nhân quyền
-nhân văn giai phẩm
 nine dash line
-noi guong lanh tu
-noi gương lãnh tụ
 noi xau dang
 noi xau lanh dao
 nong duc manh
@@ -627,20 +545,15 @@ phan quoc
 phan van giang
 phan văn giang
 phan đình trạc
-phien hop chinh phu
-phiên họp chính phủ
 pho chu tich nuoc
 pho thu tuong
 phong trao dan chu
 phong trào dân chủ
 phung xuan nha
 phá hoại chính trị
-phó chủ tịch nước
-phó thủ tướng
 phùng xuân nhạ
 phạm bình minh
 phạm minh chính
-phạm văn đồng
 phản bội tổ quốc
 phản cách mạng
 phản quốc
@@ -675,14 +588,8 @@ quan chuc chinh phu
 quan chuc tham nhung
 quan chức chính phủ
 quan chức tham nhũng
-quan doi
-quan doi nhan dan
 quan uy
 quoc hoi
-quân đội
-quân đội nhân dân
-quận ủy
-quốc hội
 r3g1m3 ch4ng3
 rebellion
 red flag
@@ -713,7 +620,6 @@ tam guong dao duc
 tap trung dan chu
 tat thanh cang
 territorial dispute
-tet mau than
 tham nhung
 tham nhũng
 tham sat hue
@@ -731,8 +637,6 @@ thoat trung
 thong nhat dat nuoc
 thoát trung
 thu dich chinh tri
-thu hoi dat
-thu hồi đất
 thu thiem
 thu truong
 thu tuong
@@ -750,8 +654,6 @@ thù địch chính trị
 thượng tướng
 thảm sát huế
 thế lực thù địch
-thống nhất đất nước
-thủ thiêm
 thủ tướng
 thủ tướng chính phủ
 thứ trưởng
@@ -802,7 +704,6 @@ tinh uy vinh phuc
 tinh uy yen bai
 to chuc khung bo
 to chuc phan dong
-to lam
 toa an
 toa an nhan dan
 toan tri
@@ -814,7 +715,6 @@ tong tham muu truong
 topple the government
 totalitarian regime
 totalitarian state
-toàn trị
 tran cam tu
 tran dai quang
 tran hong ha
@@ -859,9 +759,7 @@ tu nhan chinh tri
 tu nhan luong tam
 tu tap dong nguoi
 tu tuong dao duc
-tòa án
 tòa án nhân dân
-tô lâm
 tôn đức thắng
 tù nhân chính trị
 tù nhân lương tâm
@@ -871,7 +769,6 @@ tấm gương đạo đức
 tất thành cang
 tập trung dân chủ
 tết mậu thân
-tỉnh ủy
 tỉnh ủy an giang
 tỉnh ủy bình phước
 tỉnh ủy bình thuận
@@ -918,16 +815,9 @@ tỉnh ủy đắk nông
 tỉnh ủy đồng tháp
 tổ chức khủng bố
 tổ chức phản động
-tổng bí thư
 tổng cục an ninh
 tổng cục chính trị
 tổng tham mưu trưởng
-tụ tập đông người
-tự chuyển hóa
-tự diễn biến
-tự do báo chí
-tự do ngôn luận
-tự do tôn giáo
 uprising
 uy ban kiem tra
 uy ban nhan dan
@@ -954,11 +844,9 @@ vuot bien
 võ nguyên giáp
 võ thị ánh xuân
 võ văn thưởng
-vùng kinh tế
 văn phòng chính phủ
 văn phòng trung ương
 vương đình huệ
-vườn rau lộc hưng
 vượt biên
 xa hoi chu nghia
 xa hoi dan su
@@ -966,20 +854,15 @@ xuc pham lanh tu
 xuong duong
 xuyen tac lich su
 xuyên tạc lịch sử
-xuống đường
-xã hội chủ nghĩa
-xã hội dân sự
 xúc phạm lãnh tụ
 yellow flag
 âm mưu chính trị
 âm mưu lật đổ
 đa nguyên đa đảng
-đa đảng
 đinh la thăng
 đinh thế huynh
 đinh tiến dũng
 đoàn văn vươn
-đàn áp
 đàn áp biểu tình
 đàn áp tôn giáo
 đánh đổ chế độ
@@ -988,41 +871,27 @@ yellow flag
 đòi dân chủ
 đòi nhân quyền
 đòi tự do
-đường lưỡi bò
 đường lối đảng
 đại biểu hội đồng
 đại biểu quốc hội
 đại hội mười ba
 đại hội mười bốn
 đại hội đảng
-đại tướng
 đại tướng lương cường
 đại án tham nhũng
 đạo đức cách mạng
 đả đảo
 đả đảo cộng sản
-đảng bộ
 đảng cộng sản
-đảng lãnh đạo
-đảng quang vinh
-đảng ta
 đảng ta quang vinh
-đảng ủy
 đảo chính
 đấu tranh chính trị
 đấu tranh dân chủ
 đấu tranh giai cấp
 đốt lò
-đồng tâm
-đổi mới
-đỗ mười
 đỗ văn chiến
-độc lập tự do
 độc tài
 độc đảng
-ơn đảng
-ơn đảng ơn bác
-ủy ban kiểm tra
 ủy ban nhân dân
 ủy viên thường vụ
 ủy viên trung ương
