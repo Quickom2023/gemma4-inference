@@ -610,6 +610,20 @@ class VideoAnalyzer:
         if (has_explicit_curse(text) or has_raw_unsafe_term(text)
                 or has_politics_term(text) or has_nsfw_substring(text)
                 or has_spaced_letter_term(text)):
+            # The OCR backstop calls check_text directly, so text_is_safe's log never
+            # covers this branch — and returning here skips the model, so the [LLM]
+            # log doesn't either. Without this print a wordlist hit on OCR text sets
+            # politics with no trace anywhere.
+            stripped = _strip_symbols(text)
+            compact = normalize_for_match(text)
+            matched = sorted({m.group(0) for m in _RAW_UNSAFE_RE.finditer(stripped)}
+                             | {m.group(0) for m in _POLITICS_RE.finditer(stripped)}
+                             | {m.group(0) for m in _NSFW_SUBSTR_RE.finditer(stripped)}
+                             | {t for t in EXPLICIT_CURSE_TERMS if t in compact})
+            preview = " ".join(text.split())
+            print(f"[SAFETY] check_text=True by=wordlist "
+                  f"matched={matched or '(spaced-letter run)'} "
+                  f"text={preview[:200]!r}", flush=True)
             return True
 
         messages = [{
