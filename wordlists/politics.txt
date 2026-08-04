@@ -99,7 +99,6 @@ cong an
 cong an nhan dan
 cong san
 cong san muon nam
-coup
 cuc an ninh
 cuc doan chinh tri
 cuong che dat
@@ -153,9 +152,7 @@ dao chinh
 dau tranh chinh tri
 dau tranh dan chu
 dau tranh giai cap
-democracy
 democracy movement
-demonstration
 deputy minister
 deputy prime minister
 dien bien hoa binh
@@ -175,7 +172,6 @@ dự luật đặc khu
 fall of saigon
 fatherland front
 forced eviction
-formosa
 free elections
 freedom fighter
 freedom of press
@@ -317,7 +313,6 @@ prisoner of conscience
 pro democracy
 proletariat
 propaganda department
-protest
 provincial committee
 provincial party
 public security
@@ -434,7 +429,6 @@ yellow flag
 đại hội mười bốn
 đại hội đảng
 đại án tham nhũng
-đả đảo
 đả đảo cộng sản
 đảng cộng sản
 đảng ta quang vinh
@@ -443,6 +437,4 @@ yellow flag
 đấu tranh dân chủ
 đấu tranh giai cấp
 đốt lò
-độc tài
-độc đảng
 ủy ban nhân dân

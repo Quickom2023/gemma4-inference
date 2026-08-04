@@ -2,30 +2,17 @@ an cu bu cua toi
 an cu cua toi
 an lol
 an lon
-ancok
-ancuk
 anj cuc
 banh háng
 banh lol
 banh lon
-bedebah
-bedegong
-belegug
-beloon
-bloon
 bo me
 bo mia
 bo mie
 bo mja
 bo mje
-boloho
 bu buoi bo may di
 bu cu cua tao ne
-bucak
-budug
-buduk
-buoi
-buscu
 buồi
 bà cha mày
 bít chi
@@ -41,7 +28,6 @@ bỏ mje
 bỏ mẹ
 bỏ mịa
 bỏ mịe
-cacc
 cai lol
 cai lon
 caiconcac
@@ -52,11 +38,7 @@ caidaubuoi
 cailon
 cailonme
 cailonmemay
-cak
 cao lol
-cao lon
-cdi~
-celeng
 cheem-ban twee nyu law-or deet
 chet me
 chet mia
@@ -64,9 +46,7 @@ chet mie
 chet mja
 chet mje
 chetme
-chich
 chich choac
-chích
 chó má
 chó điên
 chó-chó
@@ -83,12 +63,6 @@ clgt
 cmm
 cmn
 cmnl
-cocot
-cocote
-cokil
-colai
-colay
-colmek
 con cac
 con cặc
 con di cho
@@ -116,10 +90,6 @@ conmemay
 cu lol
 cu lon
 cuccut
-cuk
-cukima
-cukimai
-cukimay
 cutcut
 cào lol
 cào lon
@@ -142,7 +112,6 @@ cứt chó
 cực khoái
 dach lol
 dach lon
-dancok
 dau boi
 dau boy
 dau buoi
@@ -184,10 +153,7 @@ di me
 dilol
 dilon
 diloz
-dime
 dimemay
-diml
-dis
 dis me
 dis mia
 dis mie
@@ -208,8 +174,6 @@ ditmecondicho
 ditmemay
 ditmemayconcho
 ditmethangoccho
-diz
-di~
 djt
 dkm
 dkmm
@@ -238,47 +202,23 @@ gái điếm
 ham lol
 ham lon
 ham muốn
-hencet
-henceut
-heunceut
 hiếp dâm
-hãm
 hậu môn
-jablay
-jalang
-jancok
-jancuk
-jembut
-jiancok
 ke me
 ke mia
 ke mie
 ke mja
 ke mje
-kenthu
-kentot
-kentu
-keparat
 khiêu dâm
 khổ dâm
-kintil
-kirik
-konti
-kontol
-kopet
-koplok
-kunyuk
-kurap
 kẻ hiếp dâm
 kệ mja
 kệ mje
 kệ mẹ
 kệ mịa
 kệ mịe
-lacur
 lam ye mo ye
 lao cho
-lebok
 liếm lồn
 liếm âm hộ của tôi
 liếm âm đạo của tôi
@@ -287,7 +227,6 @@ lo dit
 loi lol
 loi lon
 lon ba gia may lam long
-lonte
 loz
 lozz
 loạn luân
@@ -349,18 +288,13 @@ như cái lồn
 như lol
 như lon
 niệu đạo
-nug
 nug lol
 nug lon
 nuglol
 nuglon
-nulo
 nung lol
 nung lon
 nungcak
-nuốt
-nyepong
-núm
 núm vú
 nốn lừng
 nội dung khiêu dâm
@@ -369,15 +303,8 @@ nứng lol
 nứng lon
 occho
 phá thai
-phân
-phò
 phóng tinh
 phốc phốc
-puki
-pukima
-pukimae
-pukimak
-pukimay
 quần lót
 ranh lol
 ranh lon
@@ -386,8 +313,6 @@ rảnh lon
 sapmatlol
 sapmatlon
 sapmatloz
-silit
-sinting
 sml
 sấp mặt
 sủa bậy
@@ -397,7 +322,6 @@ sủa đi
 sự phá thai
 tet lol
 tet lon
-tetek
 thang cho
 thang cho'
 thang dien
@@ -425,7 +349,6 @@ tiên sư bố
 tiên sư nhà mày
 tiết niệu
 tml
-tolol
 trich khong
 tung lol
 tung lon
@@ -439,7 +362,6 @@ tình dục
 tổ cha
 tổ sư
 tử cung
-ublag
 vach lol
 vach lon
 vai lol
@@ -452,7 +374,6 @@ vleu
 vlol
 vlon
 vloz
-vãi
 vãi con cặc
 vãi cả lồn
 vãi cặc
@@ -465,8 +386,6 @@ xam lol
 xam lon
 xao lol
 xao lon
-xoac
-xoạc
 xuất tinh
 xàm lol
 xàm lon
@@ -489,15 +408,12 @@ zái
 đcmm
 đcmmm
 đcmmmm
-đel
 đi tiểu
 đilol
 đilon
 điloz
-đis
 đis mịa
 đis mịe
-đit
 điếm
 đjt
 đkm
@@ -512,7 +428,6 @@ zái
 đách
 đách lol
 đách lon
-đái
 đél
 đéo
 đê ca mờ
@@ -584,8 +499,6 @@ zái
 đủ mịe
 đức quốc xã
 ấu dâm
-chết
-điên
 khùng
 cức
 cutws
@@ -593,4 +506,3 @@ dijt
 cacwj
 loonf
 me may beo
-vl
