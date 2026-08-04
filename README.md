@@ -45,3 +45,17 @@ Verify the binary and that the Vietnamese (`vie`) pack is present:
 tesseract --version
 tesseract --list-langs   # should list: eng, vie
 ```
+
+5. Install `ffmpeg`
+- Ubuntu/Debian:
+``` sh
+sudo apt update
+sudo apt install -y ffmpeg
+```
+
+- Verify:
+``` sh
+which ffmpeg
+which ffprobe
+ffmpeg -version
+```
