@@ -1,53 +1,3 @@
-bi thu an giang
-bi thu bac giang
-bi thu bac kan
-bi thu bac lieu
-bi thu bac ninh
-bi thu ben tre
-bi thu binh phuoc
-bi thu binh thuan
-bi thu ca mau
-bi thu cao bang
-bi thu dak lak
-bi thu dak nong
-bi thu dang uy
-bi thu dong thap
-bi thu gia lai
-bi thu ha giang
-bi thu ha nam
-bi thu ha tinh
-bi thu hai duong
-bi thu hau giang
-bi thu huyen uy
-bi thu khanh hoa
-bi thu kien giang
-bi thu kon tum
-bi thu lai chau
-bi thu lam dong
-bi thu lang son
-bi thu lao cai
-bi thu nghe an
-bi thu ninh binh
-bi thu ninh thuan
-bi thu phu tho
-bi thu phu yen
-bi thu quang binh
-bi thu quang ninh
-bi thu quang tri
-bi thu soc trang
-bi thu son la
-bi thu tay ninh
-bi thu thai binh
-bi thu thanh uy
-bi thu tien giang
-bi thu tinh uy
-bi thu tra vinh
-bi thu trung uong
-bi thu tuyen quang
-bi thu vinh long
-bi thu vinh phuc
-bi thu yen bai
-bo truong
 bí thư an giang
 bí thư bình phước
 bí thư bình thuận
@@ -98,20 +48,6 @@ bí thư đắk lắk
 bí thư đắk nông
 bí thư đồng tháp
 bộ trưởng
-can bo lanh dao
-chanh an
-chinh uy
-chu nhiem uy ban
-chu tich can tho
-chu tich da nang
-chu tich ha noi
-chu tich hai phong
-chu tich hue
-chu tich huyen
-chu tich mat tran
-chu tich nuoc
-chu tich quoc hoi
-chu tich tinh
 chánh án
 chính ủy
 chủ nhiệm ủy ban
@@ -125,31 +61,7 @@ chủ tịch nước
 chủ tịch quốc hội
 chủ tịch tỉnh
 chủ tịch đà nẵng
-dai bieu hoi dong
-dai bieu quoc hoi
-dai tuong
-dai tuong luong cuong
-ho chu tich
-huyen uy
 huyện ủy
-lanh dao cap cao
-lanh dao dang
-lanh dao nha nuoc
-nguyen chu tich nuoc
-nguyen thu tuong
-nguyen tong bi thu
-pho chu tich nuoc
-pho thu tuong
-thanh uy
-thanh uy can tho
-thanh uy da nang
-thanh uy ha noi
-thanh uy hai phong
-thanh uy hue
-thu truong
-thu tuong
-thu tuong chinh phu
-thuong tuong
 thành ủy
 thành ủy cần thơ
 thành ủy huế
@@ -160,60 +72,9 @@ thượng tướng
 thủ tướng
 thủ tướng chính phủ
 thứ trưởng
-tinh uy
-tinh uy an giang
-tinh uy bac giang
-tinh uy bac kan
-tinh uy bac lieu
-tinh uy bac ninh
-tinh uy ben tre
-tinh uy binh phuoc
-tinh uy binh thuan
-tinh uy ca mau
-tinh uy cao bang
-tinh uy dak lak
-tinh uy dak nong
-tinh uy dong thap
-tinh uy gia lai
-tinh uy ha giang
-tinh uy ha nam
-tinh uy ha tinh
-tinh uy hai duong
-tinh uy hau giang
-tinh uy khanh hoa
-tinh uy kien giang
-tinh uy kon tum
-tinh uy lai chau
-tinh uy lam dong
-tinh uy lang son
-tinh uy lao cai
-tinh uy nghe an
-tinh uy ninh binh
-tinh uy ninh thuan
-tinh uy phu tho
-tinh uy phu yen
-tinh uy quang binh
-tinh uy quang ninh
-tinh uy quang tri
-tinh uy soc trang
-tinh uy son la
-tinh uy tay ninh
-tinh uy thai binh
-tinh uy tien giang
-tinh uy tra vinh
-tinh uy tuyen quang
-tinh uy vinh long
-tinh uy vinh phuc
-tinh uy yen bai
-tong bi thu
-tong tham muu truong
-truong ban noi chinh
-truong ban to chuc
-truong ban tuyen giao
 trưởng ban nội chính
 trưởng ban tuyên giáo
 trưởng ban tổ chức
-tu lenh quan khu
 tư lệnh quân khu
 tỉnh ủy an giang
 tỉnh ủy bình phước
@@ -260,61 +121,20 @@ tỉnh ủy đắk lắk
 tỉnh ủy đắk nông
 tỉnh ủy đồng tháp
 tổng tham mưu trưởng
-uy vien thuong vu
-uy vien trung uong
-vien truong
 viện trưởng
 đại biểu hội đồng
 đại biểu quốc hội
 đại tướng lương cường
 ủy viên thường vụ
 ủy viên trung ương
-bac ho
-bui thi minh hoai
 bác hồ
 bùi thị minh hoài
-chu ngoc anh
 chu ngọc anh
-dinh la thang
-dinh the huynh
-dinh tien dung
-do muoi
-do van chien
-doan van vuon
-le dinh kinh
-le duan
-le duc tho
-le hoang quan
-le kha phieu
-le minh hung
-le minh khai
-le thanh hai
-luong cuong
-luong tam quang
 lê minh hưng
 lương cường
 lương tam quang
-mai tien dung
 mai tiến dũng
 trần dần
-tran dan
-ngo xuan lich
-nguyen bac son
-nguyen duc chung
-nguyen duy ngoc
-nguyen hoa binh
-nguyen minh triet
-nguyen phu trong
-nguyen tan dung
-nguyen thanh long
-nguyen thi kim ngan
-nguyen thien nhan
-nguyen trong nghia
-nguyen van binh
-nguyen van linh
-nguyen van nen
-nguyen xuan phuc
-nguyen xuan thang
 nguyễn bắc son
 nguyễn duy ngọc
 nguyễn hòa bình
@@ -332,30 +152,12 @@ nguyễn xuân phúc
 nguyễn xuân thắng
 nguyễn đức chung
 ngô xuân lịch
-nong duc manh
 nông đức mạnh
-pham binh minh
-pham minh chinh
-pham van dong
-phan dinh trac
-phan van giang
 phan văn giang
 phan đình trạc
-phung xuan nha
 phùng xuân nhạ
 phạm bình minh
 phạm minh chính
-tat thanh cang
-ton duc thang
-tran cam tu
-tran dai quang
-tran hong ha
-tran quoc vuong
-tran thanh man
-trinh xuan thanh
-truong chinh
-truong minh tuan
-truong thi mai
 trương minh tuấn
 trương thị mai
 trường chinh
@@ -367,10 +169,6 @@ trần đại quang
 trịnh xuân thanh
 tôn đức thắng
 tất thành cang
-vo nguyen giap
-vo thi anh xuan
-vo van thuong
-vuong dinh hue
 võ nguyên giáp
 võ thị ánh xuân
 võ văn thưởng
@@ -381,14 +179,9 @@ vương đình huệ
 đoàn văn vươn
 đỗ văn chiến
 tô lâm
-to lam
-ban bi thu
 ban bí thư
-ban dan van
 ban dân vận
-ban noi chinh
 ban nội chính
-ban tuyen giao
 ban tuyên giáo
 bộ chính trị
 bộ công an
@@ -396,7 +189,3 @@ bộ ngoại giao
 bộ nội vụ
 bộ quốc phòng
 bộ tư pháp
-canh sat
-canh sat bien
-canh sat co dong
-canh sat giao thong

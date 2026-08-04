@@ -591,7 +591,7 @@ class VideoAnalyzer:
         # The # Safety block the caller parses is only visible here — parse_reply
         # returns booleans, so a flag that disagrees with the description is
         # otherwise untraceable. flush: uvicorn's stdout is a pipe under systemd.
-        print(f"[LLM] _describe({media_type}) raw reply:\n{text}", flush=True)
+        # print(f"[LLM] _describe({media_type}) raw reply:\n{text}", flush=True)
         return text, preprocess_s, generate_s
 
     def check_text(self, text: str, extra_rules: str | None = None,
@@ -645,7 +645,7 @@ class VideoAnalyzer:
                     **inputs, max_new_tokens=max_new_tokens, do_sample=False,
                 )
         reply = self.processor.decode(out[0][input_len:], skip_special_tokens=True)
-        print(f"[LLM] check_text raw reply:\n{reply.strip()}", flush=True)
+        # print(f"[LLM] check_text raw reply:\n{reply.strip()}", flush=True)
         return _parse_flag("nsfw", reply) or _parse_flag("politics", reply)
 
     def analyze(
