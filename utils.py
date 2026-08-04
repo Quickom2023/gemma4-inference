@@ -20,7 +20,13 @@ from dotenv import load_dotenv
 from fastapi import HTTPException, UploadFile
 from fastapi.concurrency import run_in_threadpool
 
-from service import VideoAnalyzer
+from service import (
+    _NSFW_SUBSTR_RE,
+    _POLITICS_RE,
+    _RAW_UNSAFE_RE,
+    _strip_symbols,
+    VideoAnalyzer,
+)
 
 # Must run before the constants below read the environment, not after.
 load_dotenv()
@@ -279,7 +285,21 @@ class JobStore:
         """
         if not text or not text.strip():
             return True
-        return not self._analyzer.check_text(text, extra_rules=extra_rules)
+        safe = not self._analyzer.check_text(text, extra_rules=extra_rules)
+        if not safe:
+            # The API returns a bare safety=false, so without the matched term a
+            # wordlist false positive is invisible from outside. print, not logging,
+            # so it lands in uvicorn's stdout unconfigured; flush because that stdout
+            # is a pipe under systemd/docker.
+            stripped = _strip_symbols(text)
+            matched = sorted({m.group(0) for m in _RAW_UNSAFE_RE.finditer(stripped)}
+                             | {m.group(0) for m in _POLITICS_RE.finditer(stripped)}
+                             | {m.group(0) for m in _NSFW_SUBSTR_RE.finditer(stripped)})
+            preview = " ".join(text.split())
+            print(f"[SAFETY] text_is_safe=False "
+                  f"matched={matched or '(curse/spaced-letter list or model verdict)'} "
+                  f"text={preview[:200]!r}", flush=True)
+        return safe
 
     def add(self, job: Job) -> None:
         self._reap()
