@@ -6,11 +6,6 @@ anj cuc
 banh háng
 banh lol
 banh lon
-bo me
-bo mia
-bo mie
-bo mja
-bo mje
 bu buoi bo may di
 bu cu cua tao ne
 buồi
@@ -19,14 +14,6 @@ bú bi của tôi
 bú cu
 bú cặc tôi
 bú dương vật của tôi
-bạo dâm
-bị hãm hiếp
-bỏ bú
-bỏ mja
-bỏ mje
-bỏ mẹ
-bỏ mịa
-bỏ mịe
 cai lol
 cai lon
 caiconcac
@@ -47,17 +34,7 @@ chet mje
 chetme
 chich choac
 chó má
-chó điên
-chó-chó
-chết mie
-chết mja
-chết mẹ
-chết mịa
-chết mịe
-chết tiệt
-chỉ trích
 chịch
-chổng mông
 clgt
 cmm
 cmn
@@ -74,7 +51,6 @@ con mẹ
 con mẹ mày
 con điếm
 con đĩ
-khốn nạn
 concac
 concak
 concu
@@ -91,14 +67,9 @@ cu lon
 cuccut
 cutcut
 cào lol
-cào lon
 cái lol
-cái lon
 cái lề gì thốn
-cái lờ
 cđĩ
-cười ẻ
-cười ỉa
 cặc
 cặk
 cờ hó
@@ -108,11 +79,8 @@ củ lon
 cứk
 cứt
 cứt chó
-cực khoái
 dach lol
 dach lon
-dau boi
-dau boy
 dau buoi
 dauboi
 dauboy
@@ -200,16 +168,12 @@ dương vật giả
 gái điếm
 ham lol
 ham lon
-ham muốn
-hiếp dâm
 hậu môn
 ke me
 ke mia
 ke mie
 ke mja
 ke mje
-khiêu dâm
-khổ dâm
 kẻ hiếp dâm
 kệ mja
 kệ mje
@@ -236,7 +200,6 @@ lòi lon
 lếu lều
 lồn
 lỗ đít
-lời nói dâm dục
 ma cha may
 ma cha nha may
 mat lol
@@ -244,7 +207,6 @@ mat lon
 matlol
 matlon
 matloz
-may dep trai
 me cha may
 me cha nha may
 mom lol
@@ -256,20 +218,14 @@ mát lon
 môi âm
 mõm lol
 mõm lon
-mút hạt của tôi
 mả cha
 mả cha mày
 mả cha nhà mày
-mả mẹ
-mặt bích
 mặt lol
 mặt lon
 mặt lồn
 mặt lờ
-mẹ bà
-mẹ cha anh
 mẹ cha mày
-mẹ cha nhà anh
 mẹ cha nhà mày
 mẹ kiếp
 mọe
@@ -278,7 +234,6 @@ mồm lon
 ngu
 ngu lol
 ngu lon
-người da đen
 nhu lol
 nhu lon
 nhucaidaubuoi
@@ -296,12 +251,10 @@ nung lon
 nungcak
 núm vú
 nốn lừng
-nội dung khiêu dâm
 nứng
 nứng lol
 nứng lon
 occho
-phá thai
 phóng tinh
 phốc phốc
 quần lót
@@ -313,24 +266,15 @@ sapmatlol
 sapmatlon
 sapmatloz
 sml
-sấp mặt
-sủa bậy
-sủa càn
-sủa tiếp
-sủa đi
-sự phá thai
 tet lol
 tet lon
-thang cho
 thang cho'
-thang dien
 thangmatlon
 thangml
 thay me
 thay mia
 thay mie
 thml
-thảm muncher
 thấy mẹ
 thấy mịa
 thấy mịe
@@ -348,9 +292,7 @@ tiên sư bố
 tiên sư nhà mày
 tiết niệu
 tml
-trich khong
 tung lol
-tung lon
 tuoi lol
 tuoi lon
 tuổi lol
@@ -358,9 +300,6 @@ tuổi lon
 tét lol
 tét lon
 tình dục
-tổ cha
-tổ sư
-tử cung
 vach lol
 vach lon
 vai lol
@@ -388,21 +327,16 @@ xao lon
 xuất tinh
 xàm lol
 xàm lon
-xáo trộn
 xéo háng
 xạo lol
 xạo lon
-zái
 á đìu
 á đù
-ái nhi
-âm môn
 âm vật
 âm đạo
 óc chó
 ăn lol
 ăn lon
-ăn mày
 đcm
 đcmm
 đcmmm
@@ -458,7 +392,6 @@ zái
 đề mama
 đệch
 đệt
-địa ngục
 địt
 địt ba
 địt bà
@@ -473,7 +406,6 @@ zái
 địtconmẹ
 địtconmẹmày
 đốn cửa lòng
-đồ khỉ
 đồ khốn
 đồ ngu
 đồ điên
@@ -496,9 +428,7 @@ zái
 đủ mẹ
 đủ mịa
 đủ mịe
-đức quốc xã
 ấu dâm
-khùng
 cức
 cutws
 dijt
